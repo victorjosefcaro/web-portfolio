@@ -1,0 +1,360 @@
+---
+// src/pages/index.astro
+import MainLayout from "../layouts/MainLayout.astro";
+// Import the newly created components
+import PortfolioCard from "../components/PortfolioCard.astro";
+import SkillTag from "../components/SkillTag.astro";
+import CertificationCard from "../components/CertificationCard.astro";
+
+// --- Data Definitions ---
+// (Keep data here for the page to manage and pass down)
+
+// Define portfolio items data
+const portfolioItems = [
+  {
+    title: "Project Alpha",
+    description:
+      "A web application built with Astro and Tailwind CSS focusing on performance and SEO.",
+    imageUrl: "https://placehold.co/600x400/818CF8/1E3A8A?text=Project+Alpha", // Darker Indigo
+    link: "#",
+  },
+  {
+    title: "Data Visualization Dashboard",
+    description:
+      "Interactive dashboard using D3.js to visualize complex datasets effectively.",
+    imageUrl: "https://placehold.co/600x400/FBCFE8/831843?text=Project+Beta", // Pink
+    link: "#",
+  },
+  {
+    title: "E-commerce Platform API",
+    description:
+      "Backend API developed with Node.js and Express for an online store.",
+    imageUrl: "https://placehold.co/600x400/A5F3FC/0E7490?text=Project+Gamma", // Cyan
+    link: "#",
+  },
+  {
+    title: "Mobile App Prototype",
+    description: "Designed and prototyped a mobile application using Figma.",
+    imageUrl: "https://placehold.co/600x400/FDE68A/78350F?text=Project+Delta", // Amber
+    link: "#",
+  },
+];
+
+// Define skills data, categorized
+const skillCategories = [
+  {
+    title: "Programming Languages",
+    bgColor: "bg-blue-100",
+    textColor: "text-blue-800",
+    skills: [
+      { name: "Java", icon: "fas fa-mug-hot" },
+      { name: "Python", icon: "fab fa-python" },
+      { name: "C#", icon: "fab fa-hashtag" },
+      { name: "SQL", icon: "fas fa-database" },
+      { name: "PHP", icon: "fas fa-server" },
+      { name: "JavaScript", icon: "fab fa-js" },
+    ],
+  },
+  {
+    title: "Web Development",
+    bgColor: "bg-green-100",
+    textColor: "text-green-800",
+    skills: [
+      { name: "HTML", icon: "fab fa-html5" },
+      { name: "CSS", icon: "fab fa-css3-alt" },
+      { name: "Bootstrap", icon: "fab fa-bootstrap" },
+      { name: "Laravel", icon: "fas fa-cubes" },
+      { name: "Astro", icon: "fas fa-rocket" },
+      { name: "Tailwind CSS", icon: "fas fa-wind" },
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    bgColor: "bg-orange-100",
+    textColor: "text-orange-800",
+    skills: [
+      { name: "VS Code", icon: "fas fa-code" },
+      { name: "Git", icon: "fab fa-git-alt" },
+      { name: "GitHub", icon: "fab fa-github" },
+      { name: "Figma", icon: "fas fa-pen" },
+      { name: "Canva", icon: "fas fa-palette" },
+    ],
+  },
+  {
+    title: "Machine Learning & Data Science",
+    bgColor: "bg-purple-100",
+    textColor: "text-purple-800",
+    skills: [
+      { name: "PyTorch", icon: "fas fa-fire" },
+      { name: "RapidMiner", icon: "fas fa-bolt" },
+      { name: "Power BI", icon: "fas fa-chart-line" },
+    ],
+  },
+];
+
+// Define certifications data
+const certifications = [
+  {
+    title: "Astro Fundamentals",
+    description:
+      "Completed course covering core concepts and features of the Astro framework.",
+    imageUrl: "https://placehold.co/600x400/C4B5FD/4C1D95?text=Cert+Astro", // Violet
+    link: "#",
+  },
+  {
+    title: "Responsive Web Design",
+    description:
+      "Certified in creating web pages that adapt seamlessly to different screen sizes.",
+    imageUrl: "https://placehold.co/600x400/FCA5A5/7F1D1D?text=Cert+RWD", // Red
+    link: "#",
+  },
+  {
+    title: "JavaScript Algorithms",
+    description:
+      "Verified proficiency in fundamental data structures and algorithms using JavaScript.",
+    imageUrl: "https://placehold.co/600x400/99F6E4/0F766E?text=Cert+JS+Algos", // Teal
+    link: "#",
+  },
+  {
+    title: "Cloud Practitioner Essentials",
+    description:
+      "Basic understanding of cloud concepts, services, security, and architecture.",
+    imageUrl: "https://placehold.co/600x400/A3E635/3F6212?text=Cert+Cloud", // Lime
+    link: "#",
+  },
+];
+
+// Pass the desired title to the layout
+const pageTitle = "Victor Caro | Portfolio";
+---
+
+<MainLayout title={pageTitle}>
+  {/* --- Hero Banner Section --- */}
+  <section id="about" class="content-section mb-12 md:mb-16 lg:mb-20 pt-5">
+    {/* Hero Banner Container */}
+    <div
+      class="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 p-8 md:p-12 lg:p-16 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8 md:gap-12"
+    >
+      {/* Text Content */}
+      <div class="md:w-2/3 text-center md:text-left">
+        <h2
+          class="text-4xl md:text-5xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
+        >
+          Hi, I'm <span class="text-indigo-600 dark:text-indigo-400"
+            >Victor</span
+          >
+        </h2>
+        <p
+          class="text-xl md:text-4xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
+        >
+          A 4th-year Computer Science student ready to build amazing things.
+        </p>
+        <p class="text-md md:text-2xl text-gray-600 dark:text-gray-400 mb-8">
+          Passionate about programming, problem-solving, and eager to contribute
+          to innovative projects.
+        </p>
+        <a
+          href="#contact"
+          class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
+        >
+          Get In Touch
+        </a>
+      </div>
+
+      {/* Image Content */}
+      <div class="md:w-1/3 flex justify-center md:justify-end">
+        <img
+          src="/images/Victor.png"
+          alt="Victor Caro Profile Picture"
+          class="rounded-full w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white dark:border-gray-700 shadow-xl"
+          onerror="this.onerror=null; this.src='https://placehold.co/384x384/E0E7FF/4F46E5?text=Error';"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/* --- Portfolio Section (Using Component) --- */}
+  <section id="portfolio" class="content-section mb-12 md:mb-16 lg:mb-20 pt-5">
+    <h2
+      class="text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
+    >
+      Portfolio
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Map over portfolioItems array and render PortfolioCard component */}
+      {
+        portfolioItems.map((item) => (
+          <PortfolioCard
+            title={item.title}
+            description={item.description}
+            imageUrl={item.imageUrl}
+            link={item.link}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  {/* --- Skills Section (Using Component) --- */}
+  <section id="skills" class="content-section mb-12 md:mb-16 lg:mb-20 pt-5">
+    <h2
+      class="text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
+    >
+      Skills
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+      {/* Map over skillCategories array */}
+      {
+        skillCategories.map((category) => (
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">
+              {category.title}
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {/* Map over skills and render SkillTag component */}
+              {category.skills.map((skill) => (
+                <SkillTag
+                  name={skill.name}
+                  icon={skill.icon}
+                  bgColor={category.bgColor}
+                  textColor={category.textColor}
+                />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* --- Certifications Section (Using Component) --- */}
+  <section
+    id="certifications"
+    class="content-section mb-12 md:mb-16 lg:mb-20 pt-5"
+  >
+    <h2
+      class="text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
+    >
+      Certifications
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        /* Map over certifications array and render CertificationCard component */
+      }
+      {
+        certifications.map((cert) => (
+          <CertificationCard
+            title={cert.title}
+            description={cert.description}
+            imageUrl={cert.imageUrl}
+            link={cert.link}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  {/* --- Education Section --- */}
+  <section id="education" class="content-section mb-12 md:mb-16 lg:mb-20 pt-5">
+    <h2
+      class="text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
+    >
+      Education
+    </h2>
+    <div class="space-y-6">
+      {/* This could also be a component if you anticipate multiple entries */}
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">
+          Bachelor of Science In Computer Science
+        </h3>
+        <p class="text-md text-gray-700 dark:text-gray-300 font-medium">
+          Adamson University
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">2021 - 2025</p>
+      </div>
+    </div>
+  </section>
+
+  {/* --- Contact Section --- */}
+  <section id="contact" class="content-section mb-12 md:mb-16 lg:mb-20 pt-5">
+    <h2
+      class="text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
+    >
+      Contact Me
+    </h2>
+    <p class="mb-6 text-gray-700 dark:text-gray-300">
+      Have a question or want to work together? Feel free to reach out using the
+      form below or via email. I'm always open to discussing new projects or
+      opportunities.
+    </p>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      {/* Consider making the form a component if reused or complex */}
+      <form
+        action="#"
+        method="POST"
+        onsubmit="alert('Form submission needs backend handling!'); return false;"
+      >
+        <div class="mb-4">
+          <label
+            for="name"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >Name</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+            placeholder="Your Name"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="message"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >Message</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+            placeholder="Your message..."></textarea>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 disabled:opacity-50"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+      <p class="mt-6 text-sm text-gray-600 dark:text-gray-400">
+        Alternatively, you can email me directly at: <a
+          href="mailto:your.email@example.com"
+          class="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300"
+          >your.email@example.com</a
+        >
+        {/* Replace with your actual email */}
+      </p>
+    </div>
+  </section>
+</MainLayout>

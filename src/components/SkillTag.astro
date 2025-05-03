@@ -1,0 +1,30 @@
+---
+// src/components/SkillTag.astro
+// Reusable component for displaying a skill tag with an optional icon.
+
+// Define the expected properties (props) for this component
+export interface Props {
+    name: string;
+    icon?: string; // Icon class (e.g., 'fab fa-java') is optional
+    bgColor?: string;
+    textColor?: string;
+}
+
+// Destructure props with default values if needed (Tailwind classes handle defaults well)
+const {
+    name,
+    icon,
+    bgColor = "bg-gray-100",
+    textColor = "text-gray-800",
+} = Astro.props;
+
+// Combine Tailwind classes, ensuring defaults are applied if specific ones aren't passed
+const tagClasses = `${bgColor} ${textColor} text-sm font-medium px-4 py-2 rounded-full shadow-sm flex items-center`;
+---
+
+<span class:list={[tagClasses]}>
+    {/* Use class:list directive for cleaner class combination */}
+    {icon && <i class:list={[icon, "mr-2"]} />}
+    {/* Render icon only if provided */}
+    {name}
+</span>

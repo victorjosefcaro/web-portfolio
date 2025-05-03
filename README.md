@@ -59,11 +59,3 @@ web-portfolio/
 ├── tailwind.config.js
 └── README.md
 ```
-
-## Features in Detail
-
-- **Responsive Navigation:** Smooth scrolling with active section highlighting
-- **Portfolio Section:** Grid layout for showcasing projects
-- **Skills Section:** Categorized skills with visual indicators
-- **Contact Form:** Easy-to-use contact interface
-- **Modern UI:** Clean design with smooth transitions

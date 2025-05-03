@@ -1,47 +1,69 @@
-# Astro Starter Kit: Minimal
+# Personal Portfolio Website
 
-```sh
-npm create astro@latest -- --template minimal
+A clean, responsive portfolio website built with [Astro](https://astro.build/), Tailwind CSS, and JavaScript.
+
+## Features
+
+- 🎨 Clean and modern design
+- 📱 Fully responsive layout
+- 🔗 Smooth scrolling navigation
+- 📊 Skills visualization
+- 📂 Project showcase
+- 📝 Contact form
+- 🎯 Active section highlighting
+
+## Technologies Used
+
+- Astro
+- Tailwind CSS
+- JavaScript
+- Font Awesome Icons
+- Google Fonts (Inter)
+
+## Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/victorjosefcaro/victorjosefcaro.github.io.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open the local server URL (usually [http://localhost:4321](http://localhost:4321)) in your browser.
+
+## Project Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+web-portfolio/
 ├── public/
+│   └── images/
+│       └── Victor.png
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/
+│   │   ├── CertificationCard.astro
+│   │   ├── PortfolioCard.astro
+│   │   └── SkillTag.astro
+│   ├── layouts/
+│   │   └── MainLayout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
+├── package.json
+├── astro.config.mjs
+├── tailwind.config.js
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Features in Detail
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Responsive Navigation:** Smooth scrolling with active section highlighting
+- **Portfolio Section:** Grid layout for showcasing projects
+- **Skills Section:** Categorized skills with visual indicators
+- **Contact Form:** Easy-to-use contact interface
+- **Modern UI:** Clean design with smooth transitions

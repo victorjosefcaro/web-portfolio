@@ -40,8 +40,6 @@ const currentYear = new Date().getFullYear();
       html {
         scroll-behavior: smooth;
       }
-
-      /* Add other global styles from style.css */
     </style>
   </head>
   <body
@@ -53,49 +51,67 @@ const currentYear = new Date().getFullYear();
       >
         <div class="w-full flex justify-center">
           <nav
-            class="bg-white dark:bg-gray-800 shadow-sm rounded-2xl px-6 py-4 max-w-2xl w-full flex justify-center"
+            class="bg-gray-50 dark:bg-gray-900 shadow-lg rounded-2xl px-2 sm:px-2 py-3 max-w-3xs sm:max-w-xl flex justify-center"
             id="main-nav"
           >
-            <ul class="flex flex-wrap gap-2 md:gap-4">
+            <ul class="flex flex-wrap gap-1 md:gap-2">
               <li>
                 <a
                   href="#about"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
                   data-section="about"
-                  id="nav-about">About</a
+                  id="nav-about"
                 >
+                  <span class="sm:hidden"><i class="fas fa-user"></i></span>
+                  <span class="hidden sm:inline">About</span>
+                </a>
               </li>
               <li>
                 <a
                   href="#portfolio"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
                   data-section="portfolio"
-                  id="nav-portfolio">Portfolio</a
+                  id="nav-portfolio"
                 >
+                  <span class="sm:hidden"><i class="fas fa-briefcase"></i></span
+                  >
+                  <span class="hidden sm:inline">Portfolio</span>
+                </a>
               </li>
               <li>
                 <a
                   href="#skills"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
                   data-section="skills"
-                  id="nav-skills">Skills</a
+                  id="nav-skills"
                 >
+                  <span class="sm:hidden"><i class="fas fa-tools"></i></span>
+                  <span class="hidden sm:inline">Skills</span>
+                </a>
               </li>
               <li>
                 <a
                   href="#education"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
                   data-section="education"
-                  id="nav-education">Education</a
+                  id="nav-education"
                 >
+                  <span class="sm:hidden"
+                    ><i class="fas fa-graduation-cap"></i></span
+                  >
+                  <span class="hidden sm:inline">Education</span>
+                </a>
               </li>
               <li>
                 <a
                   href="#contact"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
                   data-section="contact"
-                  id="nav-contact">Contact</a
+                  id="nav-contact"
                 >
+                  <span class="sm:hidden"><i class="fas fa-envelope"></i></span>
+                  <span class="hidden sm:inline">Contact</span>
+                </a>
               </li>
             </ul>
           </nav>
@@ -153,7 +169,7 @@ const currentYear = new Date().getFullYear();
           const section = document.getElementById(sections[i]);
           if (section) {
             const rect = section.getBoundingClientRect();
-            if (rect.top <= 80) {
+            if (rect.top <= 150) {
               navLinks.forEach((link) =>
                 link.classList.remove("text-indigo-700", "font-bold"),
               );

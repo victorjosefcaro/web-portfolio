@@ -224,9 +224,6 @@ const pageTitle = "Victor Caro | Portfolio";
         <span class="mr-2">🎓</span>Education
       </h2>
       <div class="space-y-6">
-        {
-          /* This could also be a component if you anticipate multiple entries */
-        }
         <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
           <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
             Bachelor of Science In Computer Science
@@ -247,7 +244,7 @@ const pageTitle = "Victor Caro | Portfolio";
       <h2
         class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
       >
-        <span class="mr-2">✉️</span>Contact Me
+        <span class="mr-2">✉️</span>Contact
       </h2>
       <p class="mb-6 text-gray-700 dark:text-gray-300">
         Have a question or want to work together? Feel free to reach out using
@@ -255,12 +252,7 @@ const pageTitle = "Victor Caro | Portfolio";
         or opportunities.
       </p>
       <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
-        {/* Consider making the form a component if reused or complex */}
-        <form
-          action="#"
-          method="POST"
-          onsubmit="alert('Form submission needs backend handling!'); return false;"
-        >
+        <form id="contact-form" action="#" method="POST">
           <div class="mb-4">
             <label
               for="name"
@@ -313,14 +305,62 @@ const pageTitle = "Victor Caro | Portfolio";
               Send Message
             </button>
           </div>
+          <p id="form-status" class="mt-4 text-sm font-semibold transition-all">
+          </p>
         </form>
+        <script is:inline>
+          const form = document.getElementById("contact-form");
+          const status = document.getElementById("form-status");
+          function setStatus(message, type) {
+            status.textContent = message;
+            status.className =
+              "mt-4 text-sm font-semibold transition-all px-4 py-2 rounded " +
+              (type === "success"
+                ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 border border-green-300 dark:border-green-700 shadow"
+                : type === "error"
+                  ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 border border-red-300 dark:border-red-700 shadow"
+                  : "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 border border-indigo-300 dark:border-indigo-700 shadow");
+          }
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            setStatus("Sending...", "info");
+            const name = form.name.value;
+            const email = form.email.value;
+            const message = form.message.value;
+            try {
+              const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, message }),
+              });
+              if (res.ok) {
+                setStatus("Message sent successfully!", "success");
+                form.reset();
+                setTimeout(() => {
+                  status.textContent = "";
+                  status.className =
+                    "mt-4 text-sm font-semibold transition-all";
+                }, 4000);
+              } else {
+                setStatus(
+                  "Failed to send message. Please try again later.",
+                  "error",
+                );
+              }
+            } catch (err) {
+              setStatus(
+                "Error sending message. Please try again later.",
+                "error",
+              );
+            }
+          });
+        </script>
         <p class="mt-6 text-sm text-gray-600 dark:text-gray-400 break-words">
           Alternatively, you can email me directly at: <a
-            href="mailto:your.email@example.com"
+            href="mailto:victorjosefcaro@gmail.com"
             class="text-indigo-600 dark:text-indigo-400 hover:underline"
-            >your.email@example.com</a
+            >victorjosefcaro@gmail.com</a
           >
-          {/* Replace with your actual email */}
         </p>
       </div>
     </section>

@@ -169,7 +169,7 @@ const currentYear = new Date().getFullYear();
           const section = document.getElementById(sections[i]);
           if (section) {
             const rect = section.getBoundingClientRect();
-            if (rect.top <= 150) {
+            if (rect.top <= 200) {
               navLinks.forEach((link) =>
                 link.classList.remove("text-indigo-700", "font-bold"),
               );

@@ -11,10 +11,18 @@ import SkillTag from "../components/SkillTag.astro";
 // Define portfolio items data
 const portfolioItems = [
   {
+    title: "tomato-ripeness-analyzer",
+    description:
+      "A machine learning tool designed to classify the ripeness stages of hybrid tomatoes from images, utilizing K-Nearest Neighbors (KNN) and Support Vector Machine (SVM) algorithms.",
+    imageUrl: "/images/tomato-ripeness-analyzer.png",
+    link: "https://github.com/victorjosefcaro/tomato-ripeness-analyzer",
+    skills: ["Python", "VS Code", "scikit-learn", "OpenCV"],
+  },
+  {
     title: "ROQS",
     description:
       "Restaurant Ordering and Queuing System - a web app that streamlines restaurant operations with tools for orders, queues, tables, inventory, and staff management.",
-    imageUrl: "/images/roqs.png", // Darker Indigo
+    imageUrl: "/images/roqs.png",
     link: "https://github.com/victorjosefcaro/ROQS",
     skills: ["SQL", "PHP", "HTML", "CSS", "Bootstrap", "VS Code"],
   },
@@ -22,7 +30,7 @@ const portfolioItems = [
     title: "numerical-analysis-toolkit",
     description:
       "A toolkit offering interactive tools and resources for interpolation, integration, root-finding, and error analysis methods.",
-    imageUrl: "/images/numerical-analysis-toolkit.png", // Pink
+    imageUrl: "/images/numerical-analysis-toolkit.png",
     link: "https://github.com/victorjosefcaro/numerical-analysis-toolkit",
     skills: ["Java", "Python", "C#", "NetBeans", "VS Code", "Visual Studio"],
   },
@@ -90,9 +98,11 @@ const skillCategories = [
     bgColor: "bg-purple-100 dark:bg-purple-900",
     textColor: "text-purple-800 dark:text-purple-200",
     skills: [
+      { name: "Power BI", icon: "fas fa-chart-bar" },
+      { name: "scikit-learn", icon: "fas fa-chart-line" },
+      { name: "OpenCV", icon: "fas fa-eye" },
       { name: "PyTorch", icon: "fas fa-fire" },
       { name: "RapidMiner", icon: "fas fa-bolt" },
-      { name: "Power BI", icon: "fas fa-chart-line" },
     ],
   },
 ];

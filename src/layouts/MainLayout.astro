@@ -24,6 +24,7 @@ const currentYear = new Date().getFullYear();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content="Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -121,7 +122,7 @@ const currentYear = new Date().getFullYear();
         <slot />
       </main>
       <footer
-        class="py-6 text-xs text-gray-400 dark:text-gray-500 text-center w-full bg-white dark:bg-gray-800 shadow-inner"
+        class="py-6 text-xs text-gray-600 dark:text-gray-400 text-center w-full bg-white dark:bg-gray-800 shadow-inner"
       >
         &copy; {currentYear} All rights reserved
       </footer>
@@ -133,7 +134,8 @@ const currentYear = new Date().getFullYear();
           class="bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
           aria-label="GitHub"
         >
-          <i class="fab fa-github text-2xl"></i>
+          <i class="fab fa-github text-2xl" aria-hidden="true"></i>
+          <span class="sr-only">Visit Victor Caro's GitHub profile</span>
         </a>
         <a
           href="https://www.linkedin.com/in/victor-caro-a4906434a/"
@@ -142,7 +144,8 @@ const currentYear = new Date().getFullYear();
           class="bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
           aria-label="LinkedIn"
         >
-          <i class="fab fa-linkedin text-2xl"></i>
+          <i class="fab fa-linkedin text-2xl" aria-hidden="true"></i>
+          <span class="sr-only">Visit Victor Caro's LinkedIn profile</span>
         </a>
       </div>
       <div class="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
@@ -163,26 +166,32 @@ const currentYear = new Date().getFullYear();
         document.getElementById(`nav-${id}`),
       );
 
+      function getHighlightClass() {
+        return document.documentElement.classList.contains("dark")
+          ? "text-indigo-300"
+          : "text-indigo-700";
+      }
+
       function onScroll() {
         let found = false;
+        const highlightClass = getHighlightClass();
+        navLinks.forEach((link) =>
+          link.classList.remove(
+            "text-indigo-700",
+            "text-indigo-300",
+            "font-bold",
+          ),
+        );
         for (let i = sections.length - 1; i >= 0; i--) {
           const section = document.getElementById(sections[i]);
           if (section) {
             const rect = section.getBoundingClientRect();
             if (rect.top <= 200) {
-              navLinks.forEach((link) =>
-                link.classList.remove("text-indigo-700", "font-bold"),
-              );
-              navLinks[i].classList.add("text-indigo-700", "font-bold");
+              navLinks[i].classList.add(highlightClass, "font-bold");
               found = true;
               break;
             }
           }
-        }
-        if (!found) {
-          navLinks.forEach((link) =>
-            link.classList.remove("text-indigo-700", "font-bold"),
-          );
         }
       }
       window.addEventListener("scroll", onScroll, { passive: true });
@@ -203,6 +212,8 @@ const currentYear = new Date().getFullYear();
           themeIcon.classList.remove("fa-sun");
           themeIcon.classList.add("fa-moon");
         }
+        // Update nav highlight on theme change
+        onScroll();
       }
 
       // Initial theme: check localStorage or system preference

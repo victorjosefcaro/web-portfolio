@@ -1,0 +1,49 @@
+---
+// src/components/BlogPostCard.astro
+// Reusable component for displaying a blog post card, styled to match the image.
+
+// Define the properties (props) that this component accepts.
+export interface Props {
+    title: string;
+    imageUrl: string;
+    date: string;
+}
+
+// Destructure the props for easy use in the template.
+const { title, imageUrl, date } = Astro.props;
+---
+
+<a
+    class="group relative block flex-shrink-0 w-[300px] h-72 sm:h-80 md:h-96 rounded-xl shadow-md overflow-hidden"
+    aria-label={`Read more about ${title}`}
+>
+    <img
+        src={imageUrl}
+        alt={`Visual representation for blog post titled: ${title}`}
+        class="absolute inset-0 w-full h-full object-cover transition-transform"
+        onerror="this.onerror=null; this.src='https://placehold.co/600x400/374151/FFFFFF?text=Image+Error'; this.alt='Error loading image';"
+    />
+
+    <div
+        class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-white/20 dark:from-black/90 dark:via-black/70 dark:to-black/20"
+        aria-hidden="true"
+    >
+    </div>
+
+    <div
+        class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white flex flex-col justify-end"
+    >
+        <div>
+            <h3
+                class="text-base sm:text-lg md:text-xl font-bold leading-tight text-gray-800 dark:text-gray-100 text-transition-colors duration-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 mb-1 sm:mb-1.5"
+            >
+                {title}
+            </h3>
+            <p
+                class="text-xs sm:text-sm text-gray-800 dark:text-gray-100 leading-tight"
+            >
+                {date}
+            </p>
+        </div>
+    </div>
+</a>

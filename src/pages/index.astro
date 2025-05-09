@@ -4,9 +4,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 // Import the newly created components
 import PortfolioCard from "../components/PortfolioCard.astro";
 import SkillTag from "../components/SkillTag.astro";
+import BlogPostCard from "../components/BlogPostCard.astro";
 
 // --- Data Definitions ---
-// (Keep data here for the page to manage and pass down)
 
 // Define portfolio items data
 const portfolioItems = [
@@ -100,10 +100,48 @@ const skillCategories = [
     skills: [
       { name: "Power BI", icon: "fas fa-chart-bar" },
       { name: "scikit-learn", icon: "fas fa-chart-line" },
-      { name: "OpenCV", icon: "fas fa-eye" },
       { name: "PyTorch", icon: "fas fa-fire" },
       { name: "RapidMiner", icon: "fas fa-bolt" },
     ],
+  },
+];
+
+// Updated blog posts data to match the style of the provided image
+const blogPosts = [
+  {
+    title: "Mastering Paddle: Crafting a Payment Link Page with an ADR",
+    imageUrl: "/images/paddle.webp",
+    date: "Feb 19, 2025",
+    content:
+      "A deep dive into creating a payment link page using Paddle's API, focusing on the architecture and design decisions.",
+  },
+  {
+    title: "Whitelisting with Rust: Diving Deep into Language Detection",
+    imageUrl: "/images/rust.webp",
+    date: "Mar 6, 2025",
+    content:
+      "Exploring the intricacies of language detection using Rust, with a focus on performance and accuracy.",
+  },
+  {
+    title: "Testing Slack Bots: My SeleniumBase Automation Adventure",
+    imageUrl: "/images/seleniumbase.webp",
+    date: "Mar 21, 2025",
+    content:
+      "A comprehensive guide on using SeleniumBase to automate testing for Slack bots, ensuring reliability and performance.",
+  },
+  {
+    title: "UI/UX Workshop Highlights: A Personal Reflection",
+    imageUrl: "/images/uiux.webp",
+    date: "Mar 24, 2025",
+    content:
+      "Reflecting on the key takeaways from a recent UI/UX workshop, focusing on design principles and user-centered design.",
+  },
+  {
+    title: "How Astro and Tailwind Shaped My Personal Web Portfolio",
+    imageUrl: "/images/astro.webp",
+    date: "May 3, 2020",
+    content:
+      "A personal journey of building a web portfolio using Astro and Tailwind CSS, highlighting the benefits of these technologies.",
   },
 ];
 
@@ -122,26 +160,26 @@ const pageTitle = "Victor Caro | Portfolio";
         {/* Text Content */}
         <div class="w-full md:w-2/3 text-center md:text-left">
           <h2
-            class="text-6xl sm:text-4xl md:text-5xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-4 leading-tight pt-8"
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-4 leading-tight pt-8"
           >
             Hi, I'm <span class="text-indigo-600 dark:text-indigo-300"
               >Victor</span
             >
           </h2>
           <p
-            class="text-xl sm:text-xl md:text-4xl text-gray-700 dark:text-gray-200 mb-6 leading-relaxed"
+            class="text-lg sm:text-xl md:text-2xl lg:text-4xl text-gray-700 dark:text-gray-200 mb-6 leading-relaxed"
           >
             A 4th-year Computer Science student ready to build amazing things.
           </p>
           <p
-            class="text-md sm:text-md md:text-2xl text-gray-600 dark:text-gray-300 mb-8"
+            class="text-base sm:text-md md:text-lg lg:text-2xl text-gray-600 dark:text-gray-300 mb-8"
           >
             Passionate about programming, problem-solving, and eager to
             contribute to innovative projects.
           </p>
           <a
             href="#contact"
-            class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
+            class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 text-sm sm:text-base"
           >
             Get In Touch
           </a>
@@ -154,8 +192,8 @@ const pageTitle = "Victor Caro | Portfolio";
           <img
             src="/images/Victor.webp"
             alt="Victor Caro Profile Picture"
-            class="rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 lg:w-90 lg:h-90 object-cover shadow-xl"
-            onerror="this.onerror=null; this.src='https://placehold.co/384x384/E0E7FF/4F46E5?text=Error';"
+            class="rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-xl"
+            onerror="this.onerror=null; this.src='https://placehold.co/320x320/E0E7FF/4F46E5?text=Victor';"
           />
         </div>
       </div>
@@ -164,15 +202,16 @@ const pageTitle = "Victor Caro | Portfolio";
     {/* --- Portfolio Section (Using Component) --- */}
     <section
       id="portfolio"
-      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-28"
+      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28 overflow-auto"
     >
       <h2
         class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
       >
         <span class="mr-2">💼</span>Portfolio
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Map over portfolioItems array and render PortfolioCard component */}
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      >
         {
           portfolioItems.map((item) => (
             <PortfolioCard
@@ -190,7 +229,7 @@ const pageTitle = "Victor Caro | Portfolio";
     {/* --- Skills Section (Using Component) --- */}
     <section
       id="skills"
-      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-28"
+      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28"
     >
       <h2
         class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
@@ -198,7 +237,6 @@ const pageTitle = "Victor Caro | Portfolio";
         <span class="mr-2">🛠️</span>Skills
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-        {/* Map over skillCategories array */}
         {
           skillCategories.map((category) => (
             <div>
@@ -206,7 +244,6 @@ const pageTitle = "Victor Caro | Portfolio";
                 {category.title}
               </h3>
               <div class="flex flex-wrap gap-3">
-                {/* Map over skills and render SkillTag component */}
                 {category.skills.map((skill) => (
                   <SkillTag
                     name={skill.name}
@@ -222,10 +259,48 @@ const pageTitle = "Victor Caro | Portfolio";
       </div>
     </section>
 
+    {/* --- Blog Section --- */}
+    <section
+      id="blog"
+      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28"
+    >
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-300 dark:border-gray-700 pb-2"
+      >
+        <span class="mr-2">📰</span>Blog
+      </h2>
+      <h1
+        class="text-2xl sm:3xl text-gray-900 dark:text-white mb-8 pb-2 text-center"
+      >
+        My Internship Experience at <span class="font-bold"
+          >OTis Philippines Inc.</span
+        >
+      </h1>
+
+      <div
+        class="overflow-x-auto scrollbar-thin scrollbar-track-gray-200 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 pb-8"
+      >
+        <div
+          class="flex space-x-6 md:space-x-8 lg:space-x-10 min-w-max overflow"
+        >
+          {/* Map over blogPosts array and render BlogPostCard component */}
+          {
+            blogPosts.map((post) => (
+              <BlogPostCard
+                title={post.title}
+                imageUrl={post.imageUrl}
+                date={post.date}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     {/* --- Education Section --- */}
     <section
       id="education"
-      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-28"
+      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28"
     >
       <h2
         class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
@@ -248,7 +323,7 @@ const pageTitle = "Victor Caro | Portfolio";
     {/* --- Contact Section --- */}
     <section
       id="contact"
-      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-28"
+      class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28"
     >
       <h2
         class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-300 dark:border-gray-700 pb-2"
@@ -273,7 +348,7 @@ const pageTitle = "Victor Caro | Portfolio";
               id="name"
               name="name"
               required
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Your Name"
             />
           </div>
@@ -288,7 +363,7 @@ const pageTitle = "Victor Caro | Portfolio";
               id="email"
               name="email"
               required
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="your.email@example.com"
             />
           </div>
@@ -303,13 +378,13 @@ const pageTitle = "Victor Caro | Portfolio";
               name="message"
               rows="5"
               required
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Your message..."></textarea>
           </div>
           <div>
             <button
               type="submit"
-              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 disabled:opacity-50 w-full sm:w-auto"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 w-full sm:w-auto"
             >
               Send Message
             </button>

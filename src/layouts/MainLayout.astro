@@ -1,21 +1,12 @@
 ---
-// src/layouts/MainLayout.astro
-
-// Import global styles if you created a separate CSS file (e.g., src/styles/global.css)
 import "../styles/global.css";
 
-// Define props if you want to pass data like title to the layout
 export interface Props {
-  title?: string; // Optional title prop
+  title?: string;
 }
 
-const { title = "victorjosefcaro" } = Astro.props; // Default title
-
-// Get current year for the footer using JavaScript within Astro's frontmatter
+const { title = "victorjosefcaro" } = Astro.props;
 const currentYear = new Date().getFullYear();
-
-// NOTE: This layout assumes you have set up the Astro Tailwind integration.
-// The Tailwind CDN script has been removed.
 ---
 
 <!doctype html>
@@ -24,22 +15,40 @@ const currentYear = new Date().getFullYear();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content="Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer." />
+    <meta
+      name="description"
+      content="Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
     <style is:global>
       html {
         scroll-behavior: smooth;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f3f4f6; /* Light gray track */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4338ca; /* Medium gray thumb */
+        border-radius: 3px;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #111827; /* Darker track */
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #a5b4fc; /* Gray thumb for dark mode */
       }
     </style>
   </head>
@@ -47,121 +56,256 @@ const currentYear = new Date().getFullYear();
     class="bg-gray-100 dark:bg-gray-900 font-['Inter'] text-gray-700 dark:text-gray-200"
   >
     <div class="flex flex-col min-h-screen">
+      <!-- DESKTOP NAVBAR (hidden on mobile) -->
       <header
-        class="w-full mt-4 flex justify-center fixed top-0 z-30 bg-transparent"
+        class="hidden md:flex w-full mt-4 justify-center fixed top-0 z-30 bg-transparent"
       >
         <div class="w-full flex justify-center">
           <nav
-            class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-2xl px-2 sm:px-2 py-3 max-w-3xs sm:max-w-xl flex justify-center"
+            class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-2xl px-3 sm:px-3 py-3 max-w-3xs sm:max-w-3xl flex justify-center"
             id="main-nav"
           >
             <ul class="flex flex-wrap gap-1 md:gap-2">
               <li>
                 <a
                   href="#about"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                   data-section="about"
-                  id="nav-about"
+                  id="nav-about">About</a
                 >
-                  <span class="sm:hidden"><i class="fas fa-user"></i></span>
-                  <span class="hidden sm:inline">About</span>
-                </a>
               </li>
               <li>
                 <a
                   href="#portfolio"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                   data-section="portfolio"
-                  id="nav-portfolio"
+                  id="nav-portfolio">Portfolio</a
                 >
-                  <span class="sm:hidden"><i class="fas fa-briefcase"></i></span
-                  >
-                  <span class="hidden sm:inline">Portfolio</span>
-                </a>
               </li>
               <li>
                 <a
                   href="#skills"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                   data-section="skills"
-                  id="nav-skills"
+                  id="nav-skills">Skills</a
                 >
-                  <span class="sm:hidden"><i class="fas fa-tools"></i></span>
-                  <span class="hidden sm:inline">Skills</span>
-                </a>
+              </li>
+              <li>
+                <a
+                  href="#blog"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                  data-section="blog"
+                  id="nav-blog">Blog</a
+                >
               </li>
               <li>
                 <a
                   href="#education"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                   data-section="education"
-                  id="nav-education"
+                  id="nav-education">Education</a
                 >
-                  <span class="sm:hidden"
-                    ><i class="fas fa-graduation-cap"></i></span
-                  >
-                  <span class="hidden sm:inline">Education</span>
-                </a>
               </li>
               <li>
                 <a
                   href="#contact"
-                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                   data-section="contact"
-                  id="nav-contact"
+                  id="nav-contact">Contact</a
                 >
-                  <span class="sm:hidden"><i class="fas fa-envelope"></i></span>
-                  <span class="hidden sm:inline">Contact</span>
-                </a>
               </li>
             </ul>
           </nav>
         </div>
       </header>
+
+      <button
+        id="menu-toggle"
+        class="fixed top-4 left-4 z-40 md:hidden bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+        aria-label="Open Menu"
+      >
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+
+      <div
+        id="sidebar-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"
+      >
+      </div>
+
+      <aside
+        id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 shadow-lg z-50 transform -translate-x-full transition-transform duration-300 flex flex-col space-y-6 p-6 md:hidden"
+      >
+        <div class="flex justify-between items-center">
+          <h2 class="text-lg font-bold">Victor Caro</h2>
+          <button
+            id="menu-close"
+            aria-label="Close Menu"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <nav class="flex-1">
+          <ul class="flex flex-col space-y-4">
+            <li>
+              <a
+                href="#about"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-about-mobile">About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#portfolio"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-portfolio-mobile">Portfolio</a
+              >
+            </li>
+            <li>
+              <a
+                href="#skills"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-skills-mobile">Skills</a
+              >
+            </li>
+            <li>
+              <a
+                href="#blog"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-blog-mobile">Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="#education"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-education-mobile">Education</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="block text-lg hover:text-indigo-500"
+                id="nav-contact-mobile">Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="flex space-x-4">
+          <a
+            href="https://github.com/victorjosefcaro"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            ><i class="fab fa-github"></i></a
+          >
+          <a
+            href="https://www.linkedin.com/in/victor-caro-a4906434a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            ><i class="fab fa-linkedin"></i></a
+          >
+          <button
+            id="theme-toggle-sidebar"
+            aria-label="Toggle Light/Dark Mode"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            ><i id="theme-toggle-icon-sidebar" class="fas fa-moon"></i></button
+          >
+        </div>
+      </aside>
+
       <main class="flex-1 w-full mx-auto">
         <slot />
       </main>
+
       <footer
         class="py-6 text-xs text-gray-600 dark:text-gray-400 text-center w-full bg-white dark:bg-gray-800 shadow-inner"
       >
         &copy; {currentYear} All rights reserved
       </footer>
-      <div class="fixed bottom-6 left-6 flex flex-col space-y-3 z-40">
+
+      <div
+        class="fixed bottom-6 left-6 flex flex-col space-y-3 z-40 hidden md:flex"
+      >
         <a
           href="https://github.com/victorjosefcaro"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
           aria-label="GitHub"
         >
-          <i class="fab fa-github text-2xl" aria-hidden="true"></i>
-          <span class="sr-only">Visit Victor Caro's GitHub profile</span>
+          <i class="fab fa-github text-2xl"></i>
         </a>
         <a
           href="https://www.linkedin.com/in/victor-caro-a4906434a/"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
           aria-label="LinkedIn"
         >
-          <i class="fab fa-linkedin text-2xl" aria-hidden="true"></i>
-          <span class="sr-only">Visit Victor Caro's LinkedIn profile</span>
+          <i class="fab fa-linkedin text-2xl"></i>
         </a>
       </div>
-      <div class="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
+      <div
+        class="fixed bottom-6 right-6 flex flex-col space-y-3 z-40 hidden md:flex"
+      >
         <button
           id="theme-toggle"
           type="button"
-          class="bg-white dark:bg-gray-800 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
           aria-label="Toggle Light/Dark Mode"
         >
           <i id="theme-toggle-icon" class="fas fa-moon text-2xl"></i>
         </button>
       </div>
     </div>
+
     <script is:inline>
-      // Highlight nav link when section is in view
-      const sections = ["about", "portfolio", "skills", "education", "contact"];
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuClose = document.getElementById("menu-close");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+
+      function openSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+      }
+
+      function closeSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      }
+
+      menuToggle.addEventListener("click", openSidebar);
+      menuClose.addEventListener("click", closeSidebar);
+      overlay.addEventListener("click", closeSidebar);
+
+      const sidebarLinks = [
+        document.getElementById("nav-about-mobile"),
+        document.getElementById("nav-portfolio-mobile"),
+        document.getElementById("nav-skills-mobile"),
+        document.getElementById("nav-blog-mobile"),
+        document.getElementById("nav-education-mobile"),
+        document.getElementById("nav-contact-mobile"),
+      ];
+
+      sidebarLinks.forEach((link) => {
+        link.addEventListener("click", closeSidebar);
+      });
+
+      const sections = [
+        "about",
+        "portfolio",
+        "skills",
+        "blog",
+        "education",
+        "contact",
+      ];
       const navLinks = sections.map((id) =>
         document.getElementById(`nav-${id}`),
       );
@@ -173,8 +317,7 @@ const currentYear = new Date().getFullYear();
       }
 
       function onScroll() {
-        let found = false;
-        const highlightClass = getHighlightClass();
+        let highlightClass = getHighlightClass();
         navLinks.forEach((link) =>
           link.classList.remove(
             "text-indigo-700",
@@ -188,7 +331,6 @@ const currentYear = new Date().getFullYear();
             const rect = section.getBoundingClientRect();
             if (rect.top <= 200) {
               navLinks[i].classList.add(highlightClass, "font-bold");
-              found = true;
               break;
             }
           }
@@ -197,37 +339,46 @@ const currentYear = new Date().getFullYear();
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("DOMContentLoaded", onScroll);
 
-      // Light/Dark mode toggle
-      const themeToggle = document.getElementById("theme-toggle");
-      const themeIcon = document.getElementById("theme-toggle-icon");
+      const themeToggles = [
+        document.getElementById("theme-toggle"),
+        document.getElementById("theme-toggle-sidebar"),
+      ];
+      const themeIcons = [
+        document.getElementById("theme-toggle-icon"),
+        document.getElementById("theme-toggle-icon-sidebar"),
+      ];
       const htmlEl = document.documentElement;
 
       function setTheme(dark) {
         if (dark) {
           htmlEl.classList.add("dark");
-          themeIcon.classList.remove("fa-moon");
-          themeIcon.classList.add("fa-sun");
+          themeIcons.forEach((icon) => {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+          });
         } else {
           htmlEl.classList.remove("dark");
-          themeIcon.classList.remove("fa-sun");
-          themeIcon.classList.add("fa-moon");
+          themeIcons.forEach((icon) => {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+          });
         }
-        // Update nav highlight on theme change
         onScroll();
       }
 
-      // Initial theme: check localStorage or system preference
       const userTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia(
+      const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)",
       ).matches;
-      setTheme(userTheme === "dark" || (!userTheme && systemPrefersDark));
+      setTheme(userTheme === "dark" || (!userTheme && prefersDark));
 
-      themeToggle.addEventListener("click", () => {
-        const isDark = htmlEl.classList.contains("dark");
-        setTheme(!isDark);
-        localStorage.setItem("theme", !isDark ? "dark" : "light");
-      });
+      themeToggles.forEach((btn) =>
+        btn.addEventListener("click", () => {
+          const isDark = htmlEl.classList.contains("dark");
+          setTheme(!isDark);
+          localStorage.setItem("theme", !isDark ? "dark" : "light");
+        }),
+      );
     </script>
   </body>
 </html>

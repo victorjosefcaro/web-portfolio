@@ -1,0 +1,197 @@
+---
+// src/pages/blog.astro
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Astro and Tailwind: Building My Personal Web Portfolio" isBlogPost={true}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 md:px-16 py-10 mt-8 mb-16">
+    <h1
+      class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white my-6 text-center"
+    >
+      Astro and Tailwind: Building My Personal Web Portfolio
+    </h1>
+
+    <nav class="mb-10 flex justify-center">
+      <div
+        class="w-full max-w-md bg-indigo-50 dark:bg-gray-800 border border-indigo-200 dark:border-gray-700 rounded-xl shadow-md p-5"
+      >
+        <h2
+          class="text-lg font-semibold text-indigo-900 dark:text-indigo-200 mb-3 text-center tracking-wide"
+        >
+          Table of Contents
+        </h2>
+        <ul
+          class="list-decimal list-inside space-y-2 text-indigo-700 dark:text-indigo-300 text-base"
+        >
+          <li>
+            <a
+              href="#why-astro-and-tailwind"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Why Astro and Tailwind?</a>
+          </li>
+          <li>
+            <a
+              href="#my-approach"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >My Approach</a>
+          </li>
+          <li>
+            <a
+              href="#challenges"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Challenges and Solutions</a>
+          </li>
+          <li>
+            <a
+              href="#lessons-learned"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Lessons Learned</a>
+          </li>
+          <li>
+            <a
+              href="#final-reflection"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Final Reflection</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h2
+      id="why-astro-and-tailwind"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Why Astro and Tailwind?
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      When it came time to build my personal web portfolio, I knew I wanted to
+      use modern, flexible tools that would help me achieve a fast, visually
+      appealing site without compromising on performance. After considering my
+      options, I settled on Astro and Tailwind CSS.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Astro's ability to build static sites with a lightning-fast delivery was
+      exactly what I needed. It supports multiple frameworks and allows me to
+      write clean, minimal JavaScript. As for Tailwind, I was drawn to its
+      utility-first approach. I wanted fine-grained control over my design, and
+      Tailwind made it easy to build a custom, responsive layout without the
+      overhead of a traditional CSS framework.
+    </p>
+
+    <h2
+      id="my-approach"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      My Approach
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Building my portfolio was an exciting opportunity to showcase not only my
+      work but also my web development skills. I started with Astro's minimal
+      setup to get a quick prototype running. The initial pages were basic: an
+      about me section, a portfolio of my projects, and a contact form.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      With Tailwind, I immediately appreciated the utility-first design. Rather
+      than diving into traditional CSS files and writing custom styles, I was
+      able to apply classes directly in my HTML to create a responsive layout
+      with grids, flexbox, and spacing utilities. The approach made it easy to
+      rapidly iterate on design changes.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      I also integrated Astro components to keep my code modular and
+      reusable. The ability to use components allowed me to create a consistent
+      structure across the pages, like the footer and navigation, while also
+      making it easier to update content across my entire site.
+    </p>
+
+    <h2
+      id="challenges"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Challenges and Solutions
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Even though both Astro and Tailwind made development easier, I ran into
+      some challenges along the way. One of the first obstacles I encountered
+      was ensuring cross-browser compatibility and responsiveness. Even though
+      Tailwind simplifies much of this, I had to tweak some of the design to
+      make sure it worked well on older browsers. I used Tailwind's custom
+      breakpoints and utility classes for responsiveness, but testing on
+      various devices was crucial.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Another challenge was keeping the site's performance in check. Astro's
+      default setup is pretty efficient, but as I started adding images and
+      third-party integrations (like analytics), I had to be mindful of
+      optimizing assets. For images, I used Astro's built-in image optimization
+      capabilities and the `@astro/image` package to ensure that images were
+      served in the right format and size.
+    </p>
+
+    <h2
+      id="lessons-learned"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Lessons Learned
+    </h2>
+    <ul
+      class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2"
+    >
+      <li>
+        <strong>Start simple:</strong> It's easy to get carried away with too many
+        features or complicated designs. I focused on simplicity first, and iterated
+        on it over time.
+      </li>
+      <li>
+        <strong>Use Astro's built-in features:</strong> I didn't realize how much
+        Astro can handle out of the box, especially in terms of optimizations. Make
+        sure to take advantage of Astro's image optimization and static site generation
+        features.
+      </li>
+      <li>
+        <strong>Tailwind speeds up development:</strong> The utility-first approach
+        isn't just a design pattern, it's a development pattern. I felt way more
+        productive building out components with Tailwind than I would have with a
+        custom CSS framework.
+      </li>
+      <li>
+        <strong>Performance matters:</strong> Even with a static site, performance
+        is crucial. I learned that performance is something you need to think about
+        from day one, especially when incorporating third-party elements.
+      </li>
+    </ul>
+
+    <h2
+      id="final-reflection"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Final Reflection
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Looking back, building my portfolio with Astro and Tailwind was a great
+      decision. It gave me a chance to experiment with modern tools and gave me
+      full control over both the design and performance. The best part was that
+      it was fast to build and easy to maintain.
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      My advice to anyone starting out with their own portfolio? Start with
+      simple tools that empower you to build and scale. Don't overcomplicate
+      things early on. Iterate, keep it clean, and focus on what's most
+      important: your work.
+    </p>
+
+    <p class="text-gray-700 dark:text-gray-300">
+      Astro and Tailwind CSS made building my portfolio fun and efficient. If you're looking to create a fast, beautiful, and maintainable site, I highly recommend giving them a try!
+    </p>
+
+    <div class="flex justify-start gap-4 mt-16">
+      <a
+        href="/blog/uiux-workshop-highlights"
+        class="text-indigo-700 dark:text-indigo-300 hover:underline font-medium flex items-center"
+      >
+        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        Previous: UI/UX Workshop Highlights
+      </a>
+    </div>
+  </div>
+</MainLayout>

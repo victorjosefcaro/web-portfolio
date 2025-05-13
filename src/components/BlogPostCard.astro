@@ -7,13 +7,15 @@ export interface Props {
     title: string;
     imageUrl: string;
     date: string;
+    slug: string;
 }
 
 // Destructure the props for easy use in the template.
-const { title, imageUrl, date } = Astro.props;
+const { title, imageUrl, date, slug } = Astro.props;
 ---
 
 <a
+    href={`/blog/${slug}`}
     class="group relative block flex-shrink-0 w-[300px] h-72 sm:h-80 md:h-96 rounded-xl shadow-md overflow-hidden"
     aria-label={`Read more about ${title}`}
 >

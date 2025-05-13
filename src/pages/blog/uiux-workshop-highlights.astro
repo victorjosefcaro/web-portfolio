@@ -1,0 +1,152 @@
+---
+// src/pages/blog.astro
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="UI/UX Workshop Highlights" isBlogPost={true}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 md:px-16 py-10 mt-8 mb-16">
+    <h1
+      class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white my-6 text-center"
+    >
+      UI/UX Workshop Highlights: A Personal Reflection
+    </h1>
+
+    <nav class="mb-10 flex justify-center">
+      <div
+        class="w-full max-w-md bg-indigo-50 dark:bg-gray-800 border border-indigo-200 dark:border-gray-700 rounded-xl shadow-md p-5"
+      >
+        <h2
+          class="text-lg font-semibold text-indigo-900 dark:text-indigo-200 mb-3 text-center tracking-wide"
+        >
+          Table of Contents
+        </h2>
+        <ul
+          class="list-decimal list-inside space-y-2 text-indigo-700 dark:text-indigo-300 text-base"
+        >
+          <li>
+            <a
+              href="#why-i-attended"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Why I Attended</a
+            >
+          </li>
+          <li>
+            <a
+              href="#what-i-learned"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >What I Learned</a
+            >
+          </li>
+          <li>
+            <a
+              href="#branding-lessons"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Lessons on Branding</a
+            >
+          </li>
+          <li>
+            <a
+              href="#reflection"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Final Thoughts</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h2
+      id="why-i-attended"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Why I Attended
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      I signed up for this UI/UX seminar out of curiosity and a desire to
+      sharpen my eye for design. Most of my work leans technical, but I've
+      always known that the way something feels is just as important as how it
+      works. I wanted to understand how designers think and how that thinking
+      could influence how I build. What I didn't expect was how much the seminar
+      would center on something even deeper: branding.
+    </p>
+
+    <h2
+      id="what-i-learned"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      What I Learned
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      The seminar packed a lot into a single day. We covered user research,
+      interface design principles, and common usability pitfalls. But what stood
+      out to me the most was how much of UI/UX is about intention. Every element
+      on a screen sends a message. From color choices to spacing, all of these
+      minor details matter in the grand scheme of things.
+    </p>
+
+    <h2
+      id="branding-lessons"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Lessons on Branding
+    </h2>
+    <ul
+      class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2"
+    >
+      <li>
+        <strong>Start with values.</strong> A brand isn't just a logo. It's a set
+        of values expressed through design, words, and experience. Make those values
+        clear first.
+      </li>
+      <li>
+        <strong>Clarity beats cleverness.</strong> Simpler interfaces feel more trustworthy.
+        Remove friction, not personality.
+      </li>
+      <li>
+        <strong>Details create perception.</strong> The way a button animates, the
+        tone of your 404 page, even your loading screen. All of it shapes how people
+        feel about your product or personal brand.
+      </li>
+      <li>
+        <strong>Consistency matters.</strong> Whether you're building a portfolio
+        or a startup, your visual language should stay cohesive. That builds recognition
+        and trust.
+      </li>
+    </ul>
+
+    <h2
+      id="reflection"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Final Thoughts
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      I came to the workshop looking for design tips. I left with a new way of
+      thinking about product development, storytelling, and identity. UI/UX
+      isn't about making things pretty. It's about making them meaningful and
+      making sure they say something real about who you are or what you're
+      building.
+    </p>
+
+    <p class="text-gray-700 dark:text-gray-300">
+      UI/UX workshops are invaluable for anyone looking to improve their design skills. The lessons and experiences I gained continue to shape my work and inspire me to create more thoughtful, user-friendly products.
+    </p>
+
+    <div class="flex justify-between gap-4 mt-16">
+      <a
+        href="/blog/testing-slack-bots"
+        class="text-indigo-700 dark:text-indigo-300 hover:underline font-medium flex items-center"
+      >
+        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        Previous: Testing Slack Bots
+      </a>
+      <a
+        href="/blog/astro-and-tailwind"
+        class="text-indigo-700 dark:text-indigo-300 hover:underline font-medium flex items-center"
+      >
+        Next: Astro and Tailwind
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+</MainLayout>

@@ -1,0 +1,217 @@
+---
+// src/pages/blog.astro
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Mastering Paddle" isBlogPost={true}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 md:px-16 py-10 mt-8 mb-16">
+    <h1
+      class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white my-6 text-center"
+    >
+      Mastering Paddle: Crafting a Payment Link Page with an ADR
+    </h1>
+
+    <nav class="mb-10 flex justify-center">
+      <div
+        class="w-full max-w-md bg-indigo-50 dark:bg-gray-800 border border-indigo-200 dark:border-gray-700 rounded-xl shadow-md p-5"
+      >
+        <h2
+          class="text-lg font-semibold text-indigo-900 dark:text-indigo-200 mb-3 text-center tracking-wide"
+        >
+          Table of Contents
+        </h2>
+        <ul
+          class="list-decimal list-inside space-y-2 text-indigo-700 dark:text-indigo-300 text-base"
+        >
+          <li>
+            <a
+              href="#problem"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >The Problem: Creating a Default Payment Link Page</a
+            >
+          </li>
+          <li>
+            <a
+              href="#adr"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Why an ADR?</a
+            >
+          </li>
+          <li>
+            <a
+              href="#options"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Options Considered</a
+            >
+          </li>
+          <li>
+            <a
+              href="#adr-brief"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >The ADR in Brief</a
+            >
+          </li>
+          <li>
+            <a
+              href="#lessons"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Lessons Learned</a
+            >
+          </li>
+          <li>
+            <a
+              href="#looking-ahead"
+              class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
+              >Looking Ahead</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+      When I first set out to implement a default payment link page using
+      Paddle, I thought it would be a straightforward task. Paddle, after all,
+      prides itself on being developer-friendly. But as I dug deeper into the
+      various ways to handle checkout flows, customer context, and
+      customization, I realized this wasn't just a coding task. It was an
+      architectural decision. That's when I decided to capture my findings and
+      thought process in an ADR (Architectural Decision Record).
+      <br /><br />
+      This post is a reflection of that journey, how I approached the challenge,
+      the options I considered, and why writing an ADR turned out to be one of the
+      most important steps.
+    </p>
+
+    <h2
+      id="problem"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      The Problem: Creating a Default Payment Link Page
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      The goal was to build a default landing page that could redirect users to
+      a Paddle-hosted checkout, based on product and user metadata. Simple on
+      paper, but quickly complicated by questions about user experience,
+      security, product flexibility, and long-term maintainability.
+    </p>
+
+    <h2
+      id="adr"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Why an ADR?
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Architectural Decision Records (ADRs) provide a concise, structured way to
+      record significant design decisions. Writing one forced me to think
+      critically, not just about what we were doing, but why. It also created
+      alignment among stakeholders and gave future contributors the context
+      they'd need to understand (or challenge) our approach.
+    </p>
+
+    <h2
+      id="options"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Options Considered
+    </h2>
+    <ul
+      class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2"
+    >
+      <li>
+        <strong>Static Paddle Checkout Links:</strong> Easy to set up but inflexible
+        for dynamic use cases.
+      </li>
+      <li>
+        <strong>Frontend SDK (Paddle.js):</strong> Offers customization at the cost
+        of complexity and browser dependencies.
+      </li>
+      <li>
+        <strong>Server-side Redirect (Chosen):</strong> A backend route dynamically
+        generates a Paddle link and redirects the user. This option is secure, adaptable,
+        and easy to manage.
+      </li>
+    </ul>
+
+    <h2
+      id="adr-brief"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      The ADR in Brief
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      The ADR captured the context, decision rationale, and consequences:
+    </p>
+    <ul
+      class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2"
+    >
+      <li>
+        <strong>Context:</strong> Need a flexible, secure, and scalable default payment
+        page using Paddle.
+      </li>
+      <li>
+        <strong>Decision:</strong> Implement server-side redirection with dynamic
+        checkout link generation.
+      </li>
+      <li><strong>Status:</strong> Accepted.</li>
+      <li>
+        <strong>Consequences:</strong> Requires us to manage server logic and error
+        handling, but allows full control over behavior and metadata.
+      </li>
+    </ul>
+
+    <h2
+      id="lessons"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Lessons Learned
+    </h2>
+    <ul
+      class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6 space-y-2"
+    >
+      <li>
+        Third-party integrations are architectural decisions. Treat them with
+        the same rigor.
+      </li>
+      <li>
+        Writing ADRs improves decision quality and communication across teams.
+      </li>
+      <li>
+        The "middle path" can be the smartest one. It balances control,
+        simplicity, and performance.
+      </li>
+    </ul>
+
+    <h2
+      id="looking-ahead"
+      class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-10 scroll-mt-24"
+    >
+      Looking Ahead
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-6">
+      Our current implementation works well, and it's also designed to grow.
+      With the architectural foundation in place, we can layer on custom
+      experiences such as localizations, personalized pricing, or analytics
+      tracking. And if we ever revisit the architecture, we'll know exactly why
+      we started where we did.
+    </p>
+
+    <p class="text-gray-700 dark:text-gray-300">
+      If you're facing similar challenges with third-party platforms like
+      Paddle, or wondering whether to write an ADR, my advice is simple.
+      Document your decision. Your future self (and your teammates) will thank
+      you.
+    </p>
+
+    <div class="flex justify-end gap-4 mt-16">
+      <a
+        href="/blog/whitelisting-with-rust"
+        class="text-indigo-700 dark:text-indigo-300 hover:underline font-medium flex items-center"
+      >
+        Next: Whitelisting with Rust
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </div>
+</MainLayout>

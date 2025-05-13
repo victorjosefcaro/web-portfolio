@@ -54,7 +54,8 @@ const currentYear = new Date().getFullYear();
     </style>
   </head>
   <body
-    class={"bg-gray-100 dark:bg-gray-900 font-['Inter'] text-gray-700 dark:text-gray-200" + (isBlogPost ? " blog-post" : "")}
+    class={"bg-gray-100 dark:bg-gray-900 font-['Inter'] text-gray-700 dark:text-gray-200" +
+      (isBlogPost ? " blog-post" : "")}
   >
     <div class="flex flex-col min-h-screen">
       <!-- DESKTOP NAVBAR (hidden on mobile) -->
@@ -66,68 +67,79 @@ const currentYear = new Date().getFullYear();
             class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-2xl px-3 sm:px-3 py-3 max-w-3xs sm:max-w-3xl flex justify-center"
             id="main-nav"
           >
-            {isBlogPost ? (
-              <a
-                href="/"
-                class="flex items-center gap-2 py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 font-medium"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-                Return to Home
-              </a>
-            ) : (
-              <ul class="flex flex-wrap gap-1 md:gap-2">
-                <li>
-                  <a
-                    href="#about"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="about"
-                    id="nav-about">About</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#portfolio"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="portfolio"
-                    id="nav-portfolio">Portfolio</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#skills"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="skills"
-                    id="nav-skills">Skills</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#blog"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="blog"
-                    id="nav-blog">Blog</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#education"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="education"
-                    id="nav-education">Education</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-                    data-section="contact"
-                    id="nav-contact">Contact</a
-                  >
-                </li>
-              </ul>
-            )}
+            {
+              isBlogPost ? (
+                <a
+                  href="/"
+                  class="flex items-center gap-2 py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 font-medium"
+                >
+                  Return to Home
+                </a>
+              ) : (
+                <ul class="flex flex-wrap gap-1 md:gap-2">
+                  <li>
+                    <a
+                      href="#about"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="about"
+                      id="nav-about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#portfolio"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="portfolio"
+                      id="nav-portfolio"
+                    >
+                      Portfolio
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#skills"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="skills"
+                      id="nav-skills"
+                    >
+                      Skills
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#blog"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="blog"
+                      id="nav-blog"
+                    >
+                      Blog
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#education"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="education"
+                      id="nav-education"
+                    >
+                      Education
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#contact"
+                      class="nav-link block py-1 px-4 transition duration-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+                      data-section="contact"
+                      id="nav-contact"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              )
+            }
           </nav>
         </div>
       </header>
@@ -161,62 +173,73 @@ const currentYear = new Date().getFullYear();
           </button>
         </div>
         <nav class="flex-1">
-          {isBlogPost ? (
-            <a
-              href="/"
-              class="flex items-center gap-2 text-lg hover:text-indigo-500 mb-4"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              Return to Home
-            </a>
-          ) : (
-            <ul class="flex flex-col space-y-4">
-              <li>
-                <a
-                  href="#about"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-about-mobile">About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#portfolio"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-portfolio-mobile">Portfolio</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#skills"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-skills-mobile">Skills</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#blog"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-blog-mobile">Blog</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#education"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-education-mobile">Education</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  class="block text-lg hover:text-indigo-500"
-                  id="nav-contact-mobile">Contact</a
-                >
-              </li>
-            </ul>
-          )}
+          {
+            isBlogPost ? (
+              <a
+                href="/"
+                class="flex items-center gap-2 text-lg hover:text-indigo-500 mb-4"
+              >
+                Return to Home
+              </a>
+            ) : (
+              <ul class="flex flex-col space-y-4">
+                <li>
+                  <a
+                    href="#about"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-about-mobile"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#portfolio"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-portfolio-mobile"
+                  >
+                    Portfolio
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#skills"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-skills-mobile"
+                  >
+                    Skills
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#blog"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-blog-mobile"
+                  >
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#education"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-education-mobile"
+                  >
+                    Education
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="block text-lg hover:text-indigo-500"
+                    id="nav-contact-mobile"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            )
+          }
         </nav>
         <div class="flex space-x-4">
           <a
@@ -277,7 +300,7 @@ const currentYear = new Date().getFullYear();
           <i class="fab fa-linkedin text-2xl"></i>
         </a>
       </div>
-      
+
       <!-- Theme toggle button in bottom-right -->
       <div
         class="fixed bottom-6 right-6 flex flex-col space-y-3 z-40 hidden md:flex"
@@ -329,9 +352,9 @@ const currentYear = new Date().getFullYear();
           "education",
           "contact",
         ];
-        const navLinks = sections.map((id) =>
-          document.getElementById(`nav-${id}`),
-        ).filter(Boolean); // Filter out null elements
+        const navLinks = sections
+          .map((id) => document.getElementById(`nav-${id}`))
+          .filter(Boolean); // Filter out null elements
 
         function getHighlightClass() {
           return document.documentElement.classList.contains("dark")
@@ -341,7 +364,7 @@ const currentYear = new Date().getFullYear();
 
         function onScroll() {
           if (navLinks.length === 0) return;
-          
+
           let highlightClass = getHighlightClass();
           navLinks.forEach((link) =>
             link.classList.remove(
@@ -369,12 +392,12 @@ const currentYear = new Date().getFullYear();
         document.getElementById("theme-toggle"),
         document.getElementById("theme-toggle-sidebar"),
       ].filter(Boolean);
-      
+
       const themeIcons = [
         document.getElementById("theme-toggle-icon"),
         document.getElementById("theme-toggle-icon-sidebar"),
       ].filter(Boolean);
- 
+
       const htmlEl = document.documentElement;
 
       function setTheme(dark) {

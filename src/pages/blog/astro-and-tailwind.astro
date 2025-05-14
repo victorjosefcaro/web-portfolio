@@ -3,7 +3,10 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Astro and Tailwind: Building My Personal Web Portfolio" isBlogPost={true}>
+<MainLayout
+  title="Astro and Tailwind: Building My Personal Web Portfolio"
+  isBlogPost={true}
+>
   <div class="max-w-3xl mx-auto px-4 sm:px-8 md:px-16 py-10 mt-8 mb-16">
     <h1
       class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white my-6 text-center"
@@ -27,31 +30,36 @@ import MainLayout from "../../layouts/MainLayout.astro";
             <a
               href="#why-astro-and-tailwind"
               class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
-              >Why Astro and Tailwind?</a>
+              >Why Astro and Tailwind?</a
+            >
           </li>
           <li>
             <a
               href="#my-approach"
               class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
-              >My Approach</a>
+              >My Approach</a
+            >
           </li>
           <li>
             <a
               href="#challenges"
               class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
-              >Challenges and Solutions</a>
+              >Challenges and Solutions</a
+            >
           </li>
           <li>
             <a
               href="#lessons-learned"
               class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
-              >Lessons Learned</a>
+              >Lessons Learned</a
+            >
           </li>
           <li>
             <a
               href="#final-reflection"
               class="hover:text-indigo-900 dark:hover:text-white transition-colors duration-150 font-medium"
-              >Final Reflection</a>
+              >Final Reflection</a
+            >
           </li>
         </ul>
       </div>
@@ -98,10 +106,10 @@ import MainLayout from "../../layouts/MainLayout.astro";
       rapidly iterate on design changes.
     </p>
     <p class="text-gray-700 dark:text-gray-300 mb-6">
-      I also integrated Astro components to keep my code modular and
-      reusable. The ability to use components allowed me to create a consistent
-      structure across the pages, like the footer and navigation, while also
-      making it easier to update content across my entire site.
+      I also integrated Astro components to keep my code modular and reusable.
+      The ability to use components allowed me to create a consistent structure
+      across the pages, like the footer and navigation, while also making it
+      easier to update content across my entire site.
     </p>
 
     <h2
@@ -116,8 +124,8 @@ import MainLayout from "../../layouts/MainLayout.astro";
       was ensuring cross-browser compatibility and responsiveness. Even though
       Tailwind simplifies much of this, I had to tweak some of the design to
       make sure it worked well on older browsers. I used Tailwind's custom
-      breakpoints and utility classes for responsiveness, but testing on
-      various devices was crucial.
+      breakpoints and utility classes for responsiveness, but testing on various
+      devices was crucial.
     </p>
     <p class="text-gray-700 dark:text-gray-300 mb-6">
       Another challenge was keeping the site's performance in check. Astro's
@@ -181,7 +189,9 @@ import MainLayout from "../../layouts/MainLayout.astro";
     </p>
 
     <p class="text-gray-700 dark:text-gray-300">
-      Astro and Tailwind CSS made building my portfolio fun and efficient. If you're looking to create a fast, beautiful, and maintainable site, I highly recommend giving them a try!
+      Astro and Tailwind CSS made building my portfolio fun and efficient. If
+      you're looking to create a fast, beautiful, and maintainable site, I
+      highly recommend giving them a try!
     </p>
 
     <div class="flex justify-start gap-4 mt-16">
@@ -189,7 +199,17 @@ import MainLayout from "../../layouts/MainLayout.astro";
         href="/blog/uiux-workshop-highlights"
         class="text-indigo-700 dark:text-indigo-300 hover:underline font-medium flex items-center"
       >
-        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        <svg
+          class="mr-2 w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
         Previous: UI/UX Workshop Highlights
       </a>
     </div>

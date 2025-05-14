@@ -1,13 +1,15 @@
 ---
 // src/components/BlogPostCard.astro
 // Reusable component for displaying a blog post card, styled to match the image.
+import type { BlogPost } from "../data/blogPosts";
 
 // Define the properties (props) that this component accepts.
-export interface Props {
+export interface Props extends Partial<BlogPost> {
     title: string;
     imageUrl: string;
     date: string;
     slug: string;
+    content?: string;
 }
 
 // Destructure the props for easy use in the template.
@@ -18,12 +20,21 @@ const { title, imageUrl, date, slug } = Astro.props;
     href={`/blog/${slug}`}
     class="group relative block flex-shrink-0 w-[300px] h-72 sm:h-80 md:h-96 rounded-xl shadow-md overflow-hidden"
     aria-label={`Read more about ${title}`}
+    itemscope
+    itemtype="https://schema.org/BlogPosting"
 >
+    <meta itemprop="datePublished" content={date} />
+
     <img
         src={imageUrl}
         alt={`Visual representation for blog post titled: ${title}`}
-        class="absolute inset-0 w-full h-full object-cover transition-transform"
-        onerror="this.onerror=null; this.src='https://placehold.co/600x400/374151/FFFFFF?text=Image+Error'; this.alt='Error loading image';"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        width="300"
+        height="400"
+        itemprop="image"
+        onerror="this.onerror=null; this.src='/images/placeholder.svg'; this.alt='Blog post placeholder image';"
     />
 
     <div
@@ -38,11 +49,13 @@ const { title, imageUrl, date, slug } = Astro.props;
         <div>
             <h3
                 class="text-base sm:text-lg md:text-xl font-bold leading-tight text-gray-800 dark:text-gray-100 text-transition-colors duration-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 mb-1 sm:mb-1.5"
+                itemprop="headline"
             >
                 {title}
             </h3>
             <p
                 class="text-xs sm:text-sm text-gray-800 dark:text-gray-100 leading-tight"
+                itemprop="datePublished"
             >
                 {date}
             </p>

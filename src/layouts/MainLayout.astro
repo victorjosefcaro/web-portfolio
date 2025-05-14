@@ -4,10 +4,21 @@ import "../styles/global.css";
 export interface Props {
   title?: string;
   isBlogPost?: boolean;
+  description?: string;
+  ogImage?: string;
+  keywords?: string;
 }
 
-const { title = "victorjosefcaro", isBlogPost = false } = Astro.props;
+const {
+  title = "victorjosefcaro",
+  isBlogPost = false,
+  description = "Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer.",
+  ogImage = "/images/og-image.jpg",
+  keywords = "Victor Caro, portfolio, computer science, developer, programming, projects, web development, skills",
+} = Astro.props;
+
 const currentYear = new Date().getFullYear();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjosefcaro.github.io');
 ---
 
 <!doctype html>
@@ -16,10 +27,31 @@ const currentYear = new Date().getFullYear();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta
-      name="description"
-      content="Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer."
-    />
+    
+    <!-- Basic SEO -->
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Victor Josef Caro" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={isBlogPost ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    
+    <!-- Fonts and styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

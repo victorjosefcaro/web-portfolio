@@ -1,9 +1,10 @@
 ---
 // src/components/PortfolioCard.astro
 // Reusable component for displaying a portfolio project card.
+import type { PortfolioItem } from '../data/portfolioItems';
 
 // Define the expected properties (props) for this component
-export interface Props {
+export interface Props extends Partial<PortfolioItem> {
     title: string;
     description: string;
     imageUrl: string;
@@ -17,24 +18,41 @@ const { title, description, imageUrl, link, skills } = Astro.props;
 
 <div
     class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col h-full"
+    itemscope
+    itemtype="https://schema.org/CreativeWork"
 >
-    <img
-        src={imageUrl}
-        alt={title}
-        class="w-full h-48 object-cover"
+    <img 
+        src={imageUrl} 
+        alt={`Screenshot or thumbnail of ${title} project`} 
+        class="w-full h-48 object-cover" 
+        loading="lazy"
+        decoding="async" 
+        width="400" 
+        height="200"
+        itemprop="image"
+        onerror="this.onerror=null; this.src='/images/placeholder.svg'; this.alt='Project thumbnail placeholder';"
     />
     <div class="p-4 flex flex-col flex-1">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
+        <h3 
+            class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2"
+            itemprop="name"
+        >
             {title}
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+        <p 
+            class="text-sm text-gray-600 dark:text-gray-300 mb-4"
+            itemprop="description"
+        >
             {description}
         </p>
         <div class="flex flex-wrap gap-3 mb-4">
             {
                 skills &&
                     skills.map((skill) => (
-                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-medium px-2 py-1 rounded-full">
+                        <span 
+                            class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-medium px-2 py-1 rounded-full"
+                            itemprop="keywords"
+                        >
                             {skill}
                         </span>
                     ))
@@ -44,7 +62,10 @@ const { title, description, imageUrl, link, skills } = Astro.props;
             <a
                 href={link}
                 target="_blank"
-                class="block text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium"
+                rel="noopener noreferrer"
+                class="block text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+                itemprop="url"
+                aria-label={`View ${title} project on GitHub`}
             >
                 View in GitHub
             </a>

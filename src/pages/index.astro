@@ -1,160 +1,30 @@
 ---
 // src/pages/index.astro
 import MainLayout from "../layouts/MainLayout.astro";
-// Import the newly created components
+// Import components
 import PortfolioCard from "../components/PortfolioCard.astro";
 import SkillTag from "../components/SkillTag.astro";
 import BlogPostCard from "../components/BlogPostCard.astro";
 
-// --- Data Definitions ---
-
-// Define portfolio items data
-const portfolioItems = [
-  {
-    title: "tomato-ripeness-analyzer",
-    description:
-      "A machine learning tool designed to classify the ripeness stages of hybrid tomatoes from images, utilizing K-Nearest Neighbors (KNN) and Support Vector Machine (SVM) algorithms.",
-    imageUrl: "/images/tomato-ripeness-analyzer.webp",
-    link: "https://github.com/victorjosefcaro/tomato-ripeness-analyzer",
-    skills: ["Python", "VS Code", "scikit-learn", "OpenCV"],
-  },
-  {
-    title: "ROQS",
-    description:
-      "Restaurant Ordering and Queuing System - a web app that streamlines restaurant operations with tools for orders, queues, tables, inventory, and staff management.",
-    imageUrl: "/images/roqs.webp",
-    link: "https://github.com/victorjosefcaro/ROQS",
-    skills: ["SQL", "PHP", "HTML", "CSS", "Bootstrap", "VS Code"],
-  },
-  {
-    title: "numerical-analysis-toolkit",
-    description:
-      "A toolkit offering interactive tools and resources for interpolation, integration, root-finding, and error analysis methods.",
-    imageUrl: "/images/numerical-analysis-toolkit.webp",
-    link: "https://github.com/victorjosefcaro/numerical-analysis-toolkit",
-    skills: ["Java", "Python", "C#", "NetBeans", "VS Code", "Visual Studio"],
-  },
-  {
-    title: "nurturing-love",
-    description:
-      "A visual novel made using Ren'Py, it uses data structures and algorithms to create a branching narrative.",
-    imageUrl: "/images/nurturing-love.webp",
-    link: "https://github.com/victorjosefcaro/nurturing-love",
-    skills: ["Python", "VS Code"],
-  },
-  {
-    title: "PlantCycleExplorer",
-    description:
-      "An educational app teaching plant life cycles through interactive lessons, quizzes, and visual aids.",
-    imageUrl: "/images/PlantCycleExplorer.webp",
-    link: "https://github.com/victorjosefcaro/PlantCycleExplorer",
-    skills: ["C#", "Visual Studio"],
-  },
-];
-
-// Define skills data, categorized
-const skillCategories = [
-  {
-    title: "Programming Languages",
-    bgColor: "bg-blue-100 dark:bg-blue-900",
-    textColor: "text-blue-800 dark:text-blue-200",
-    skills: [
-      { name: "Java", icon: "fas fa-mug-hot" },
-      { name: "Python", icon: "fab fa-python" },
-      { name: "C#", icon: "fab fa-hashtag" },
-      { name: "SQL", icon: "fas fa-database" },
-      { name: "PHP", icon: "fas fa-server" },
-      { name: "JavaScript", icon: "fab fa-js" },
-    ],
-  },
-  {
-    title: "Web Development",
-    bgColor: "bg-green-100 dark:bg-green-900",
-    textColor: "text-green-800 dark:text-green-200",
-    skills: [
-      { name: "HTML", icon: "fab fa-html5" },
-      { name: "CSS", icon: "fab fa-css3-alt" },
-      { name: "Bootstrap", icon: "fab fa-bootstrap" },
-      { name: "Laravel", icon: "fas fa-cubes" },
-      { name: "Astro", icon: "fas fa-rocket" },
-      { name: "Tailwind CSS", icon: "fas fa-wind" },
-    ],
-  },
-  {
-    title: "Tools & Platforms",
-    bgColor: "bg-orange-100 dark:bg-orange-900",
-    textColor: "text-orange-800 dark:text-orange-200",
-    skills: [
-      { name: "VS Code", icon: "fas fa-code" },
-      { name: "NetBeans", icon: "fas fa-cube" },
-      { name: "Git", icon: "fab fa-git-alt" },
-      { name: "GitHub", icon: "fab fa-github" },
-      { name: "Figma", icon: "fas fa-pen" },
-      { name: "Canva", icon: "fas fa-palette" },
-    ],
-  },
-  {
-    title: "Machine Learning & Data Science",
-    bgColor: "bg-purple-100 dark:bg-purple-900",
-    textColor: "text-purple-800 dark:text-purple-200",
-    skills: [
-      { name: "Power BI", icon: "fas fa-chart-bar" },
-      { name: "scikit-learn", icon: "fas fa-chart-line" },
-      { name: "PyTorch", icon: "fas fa-fire" },
-      { name: "RapidMiner", icon: "fas fa-bolt" },
-    ],
-  },
-];
-
-// Updated blog posts data to match the style of the provided image
-const blogPosts = [
-  {
-    title: "Mastering Paddle: Crafting a Payment Link Page with an ADR",
-    imageUrl: "/images/paddle.webp",
-    date: "Feb 19, 2025",
-    content:
-      "A deep dive into creating a payment link page using Paddle's API, focusing on the architecture and design decisions.",
-    slug: "mastering-paddle",
-  },
-  {
-    title: "Whitelisting with Rust: Diving Deep into Language Detection",
-    imageUrl: "/images/rust.webp",
-    date: "Mar 6, 2025",
-    content:
-      "Exploring the intricacies of language detection using Rust, with a focus on performance and accuracy.",
-    slug: "whitelisting-with-rust",
-  },
-  {
-    title: "Testing Slack Bots: My SeleniumBase Automation Adventure",
-    imageUrl: "/images/seleniumbase.webp",
-    date: "Mar 21, 2025",
-    content:
-      "A comprehensive guide on using SeleniumBase to automate testing for Slack bots, ensuring reliability and performance.",
-    slug: "testing-slack-bots",
-  },
-  {
-    title: "UI/UX Workshop Highlights: A Personal Reflection",
-    imageUrl: "/images/uiux.webp",
-    date: "Mar 24, 2025",
-    content:
-      "Reflecting on the key takeaways from a recent UI/UX workshop, focusing on design principles and user-centered design.",
-    slug: "uiux-workshop-highlights",
-  },
-  {
-    title: "Astro and Tailwind: Building My Personal Web Portfolio",
-    imageUrl: "/images/astro.webp",
-    date: "May 3, 2020",
-    content:
-      "A personal journey of building a web portfolio using Astro and Tailwind CSS, highlighting the benefits of these technologies.",
-    slug: "astro-and-tailwind",
-  },
-];
+// Import data from data files
+import { portfolioItems } from "../data/portfolioItems";
+import { skillCategories } from "../data/skillCategories";
+import { blogPosts } from "../data/blogPosts";
 
 // Pass the desired title to the layout
 const pageTitle = "Victor Caro | Portfolio";
+const metaDescription =
+  "Victor Caro's personal portfolio website. Explore projects, skills, education, and contact information for a passionate Computer Science student and developer.";
+const keywords =
+  "Victor Caro, portfolio, computer science, developer, programming, projects, web development, skills";
 ---
 
-<MainLayout title={pageTitle}>
+<MainLayout
+  title={pageTitle}
+  description={metaDescription}
+  keywords={keywords}
+  ogImage="/images/Victor.webp"
+>
   <div>
     {/* --- Hero Banner Section --- */}
     <section id="about" class="mb-8 sm:mb-12 md:mb-16 lg:mb-20">
@@ -164,13 +34,13 @@ const pageTitle = "Victor Caro | Portfolio";
       >
         {/* Text Content */}
         <div class="w-full md:w-2/3 text-center md:text-left">
-          <h2
+          <h1
             class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-4 leading-tight pt-8"
           >
             Hi, I'm <span class="text-indigo-600 dark:text-indigo-300"
               >Victor</span
             >
-          </h2>
+          </h1>
           <p
             class="text-lg sm:text-xl md:text-2xl lg:text-4xl text-gray-700 dark:text-gray-200 mb-6 leading-relaxed"
           >
@@ -184,9 +54,10 @@ const pageTitle = "Victor Caro | Portfolio";
           </p>
           <a
             href="#contact"
-            class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 text-sm sm:text-base"
+            class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:scale group hover:animate-wiggle"
+            aria-label="Contact Victor Caro"
           >
-            Get In Touch
+            <span class="inline-block">Get In Touch</span>
           </a>
         </div>
 
@@ -194,17 +65,24 @@ const pageTitle = "Victor Caro | Portfolio";
         <div
           class="w-full md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0"
         >
-          <img
-            src="/images/Victor.webp"
-            alt="Victor Caro Profile Picture"
-            class="rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-xl"
-            onerror="this.onerror=null; this.src='https://placehold.co/320x320/E0E7FF/4F46E5?text=Victor';"
-          />
+          <picture>
+            <source srcset="/images/Victor.webp" type="image/webp" />
+            <source srcset="/images/Victor.jpg" type="image/jpeg" />
+            <img
+              src="/images/Victor.jpg"
+              alt="Victor Caro Profile Picture"
+              class="rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-xl"
+              width="320"
+              height="320"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </picture>
         </div>
       </div>
     </section>
 
-    {/* --- Portfolio Section (Using Component) --- */}
+    {/* --- Portfolio Section --- */}
     <section
       id="portfolio"
       class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28 overflow-auto"
@@ -215,23 +93,15 @@ const pageTitle = "Victor Caro | Portfolio";
         <span class="mr-2">💼</span>Portfolio
       </h2>
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        role="list"
+        aria-label="Portfolio projects"
       >
-        {
-          portfolioItems.map((item) => (
-            <PortfolioCard
-              title={item.title}
-              description={item.description}
-              imageUrl={item.imageUrl}
-              link={item.link}
-              skills={item.skills}
-            />
-          ))
-        }
+        {portfolioItems.map((item) => <PortfolioCard {...item} />)}
       </div>
     </section>
 
-    {/* --- Skills Section (Using Component) --- */}
+    {/* --- Skills Section --- */}
     <section
       id="skills"
       class="scroll-mt-24 mb-8 sm:mb-12 md:mb-16 lg:mb-20 pt-5 px-4 sm:px-8 md:mx-16 lg:mx-28"
@@ -248,7 +118,11 @@ const pageTitle = "Victor Caro | Portfolio";
               <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
                 {category.title}
               </h3>
-              <div class="flex flex-wrap gap-3">
+              <div
+                class="flex flex-wrap gap-3"
+                role="list"
+                aria-label={`${category.title} skills`}
+              >
                 {category.skills.map((skill) => (
                   <SkillTag
                     name={skill.name}
@@ -274,32 +148,21 @@ const pageTitle = "Victor Caro | Portfolio";
       >
         <span class="mr-2">📰</span>Blog
       </h2>
-      <h1
-        class="text-2xl sm:3xl text-gray-900 dark:text-white mb-8 pb-2 text-center"
-      >
-        My Internship Experience at <span class="font-bold"
-          >OTis Philippines Inc.</span
-        >
-      </h1>
-
       <div
-        class="overflow-x-auto scrollbar-thin scrollbar-track-gray-200 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 pb-8"
+        class="flex overflow-x-auto pb-4 gap-6 scrollbar-hide"
+        role="list"
+        aria-label="Blog posts"
       >
-        <div
-          class="flex space-x-6 md:space-x-8 lg:space-x-10 min-w-max overflow"
-        >
-          {/* Map over blogPosts array and render BlogPostCard component */}
-          {
-            blogPosts.map((post) => (
-              <BlogPostCard
-                title={post.title}
-                imageUrl={post.imageUrl}
-                date={post.date}
-                slug={post.slug}
-              />
-            ))
-          }
-        </div>
+        {
+          blogPosts.map((post) => (
+            <BlogPostCard
+              title={post.title}
+              imageUrl={post.imageUrl}
+              date={post.date}
+              slug={post.slug}
+            />
+          ))
+        }
       </div>
     </section>
 

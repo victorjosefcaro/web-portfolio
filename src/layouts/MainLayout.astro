@@ -18,7 +18,10 @@ const {
 } = Astro.props;
 
 const currentYear = new Date().getFullYear();
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjosefcaro.github.io');
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://victorjosefcaro.github.io",
+);
 ---
 
 <!doctype html>
@@ -27,30 +30,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    
+
     <!-- Basic SEO -->
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Victor Josef Caro" />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={isBlogPost ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    
+
     <!-- Fonts and styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -82,6 +85,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
       }
       .dark ::-webkit-scrollbar-thumb {
         background: #a5b4fc; /* Gray thumb for dark mode */
+      }
+      .flip-y-hover {
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      .flip-y-hover:hover {
+        transform: rotateY(360deg);
       }
     </style>
   </head>
@@ -279,7 +289,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl flip-y-hover"
             ><i class="fab fa-github"></i></a
           >
           <a
@@ -287,13 +297,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl flip-y-hover"
             ><i class="fab fa-linkedin"></i></a
           >
           <button
             id="theme-toggle-sidebar"
             aria-label="Toggle Light/Dark Mode"
-            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl flip-y-hover"
             ><i id="theme-toggle-icon-sidebar" class="fas fa-moon"></i></button
           >
         </div>
@@ -317,7 +327,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
           href="https://github.com/victorjosefcaro"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 flip-y-hover"
           aria-label="GitHub"
         >
           <i class="fab fa-github text-2xl"></i>
@@ -326,7 +336,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
           href="https://www.linkedin.com/in/victor-caro-a4906434a/"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 flip-y-hover"
           aria-label="LinkedIn"
         >
           <i class="fab fa-linkedin text-2xl"></i>
@@ -340,7 +350,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://victorjo
         <button
           id="theme-toggle"
           type="button"
-          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 flip-y-hover"
           aria-label="Toggle Light/Dark Mode"
         >
           <i id="theme-toggle-icon" class="fas fa-moon text-2xl"></i>

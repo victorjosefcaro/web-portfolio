@@ -2,6 +2,14 @@
 
 A clean, responsive portfolio website built with [Astro](https://astro.build/), Tailwind CSS, and JavaScript.
 
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Local Development](#local-development)
+- [Project Structure](#project-structure)
+- [License](#license)
+
 ## Features
 
 - 🎨 Clean and modern design
@@ -23,27 +31,26 @@ A clean, responsive portfolio website built with [Astro](https://astro.build/), 
 
 ## Local Development
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/victorjosefcaro/web-portfolio.git
-   cd web-portfolio
-   ```
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/victorjosefcaro/web-portfolio.git](https://github.com/victorjosefcaro/web-portfolio.git)
+    cd web-portfolio
+    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-4. Open the local server URL (usually [http://localhost:4321](http://localhost:4321)) in your browser.
+4.  Open the local server URL (usually [http://localhost:4321](http://localhost:4321)) in your browser.
 
 ## Project Structure
 
-```
 victorjosefcaro.github.io/
 ├── public/            # Static assets
 │   └── images/
@@ -65,4 +72,7 @@ victorjosefcaro.github.io/
 ├── astro.config.mjs   # Astro configuration
 ├── tailwind.config.js # Tailwind configuration
 └── README.md          # Project documentation
-```
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -11,51 +11,58 @@ A clean, responsive portfolio website built with [Astro](https://astro.build/), 
 - 📂 Project showcase
 - 📝 Contact form
 - 🎯 Active section highlighting
+- 📄 Blog section
 
 ## Technologies Used
 
-- Astro
-- Tailwind CSS
-- JavaScript
-- Font Awesome Icons
-- Google Fonts (Inter)
+- [Astro](https://astro.build/) - Fast static site generator
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- JavaScript - For interactive elements
+- [Font Awesome](https://fontawesome.com/) - For icons
+- [Google Fonts](https://fonts.google.com/) - For typography (Inter)
 
 ## Local Development
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/victorjosefcaro/victorjosefcaro.github.io.git
+   git clone https://github.com/victorjosefcaro/web-portfolio.git
+   cd web-portfolio
    ```
+
 2. Install dependencies:
    ```bash
    npm install
    ```
+
 3. Start the development server:
    ```bash
    npm run dev
    ```
+
 4. Open the local server URL (usually [http://localhost:4321](http://localhost:4321)) in your browser.
 
 ## Project Structure
 
 ```
-web-portfolio/
-├── public/
+victorjosefcaro.github.io/
+├── public/            # Static assets
 │   └── images/
-│       └── Victor.png
-├── src/
-│   ├── components/
-│   │   ├── CertificationCard.astro
+├── src/               # Source code
+│   ├── components/    # Reusable UI components
+│   │   ├── BlogPostCard.astro
 │   │   ├── PortfolioCard.astro
 │   │   └── SkillTag.astro
-│   ├── layouts/
+│   ├── data/          # Data files
+│   ├── layouts/       # Page layouts
 │   │   └── MainLayout.astro
-│   ├── pages/
-│   │   └── index.astro
-│   └── styles/
-│       └── global.css
-├── package.json
-├── astro.config.mjs
-├── tailwind.config.js
-└── README.md
+│   ├── pages/         # Page components
+│   │   ├── index.astro  # Home page
+│   │   ├── api/       # API endpoints
+│   │   └── blog/      # Blog pages
+│   └── styles/        # Global styles
+├── .astro/            # Astro build files
+├── package.json       # Project dependencies
+├── astro.config.mjs   # Astro configuration
+├── tailwind.config.js # Tailwind configuration
+└── README.md          # Project documentation
 ```

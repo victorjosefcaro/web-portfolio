@@ -52,7 +52,7 @@ A clean, responsive portfolio website built with [Astro](https://astro.build/), 
 ## Project Structure
 
 ```
-victorjosefcaro.github.io/
+web-portfolio/
 ├── public/            # Static assets
 │   └── images/
 ├── src/               # Source code

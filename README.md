@@ -51,6 +51,7 @@ A clean, responsive portfolio website built with [Astro](https://astro.build/), 
 
 ## Project Structure
 
+```
 victorjosefcaro.github.io/
 ├── public/            # Static assets
 │   └── images/
@@ -72,6 +73,7 @@ victorjosefcaro.github.io/
 ├── astro.config.mjs   # Astro configuration
 ├── tailwind.config.js # Tailwind configuration
 └── README.md          # Project documentation
+```
 
 ## License
 

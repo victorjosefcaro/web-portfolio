@@ -1,0 +1,88 @@
+---
+type Direction = 'up' | 'down' | 'left' | 'right';
+
+interface Props {
+    as?: keyof HTMLElementTagNameMap;
+    delay?: number;
+    duration?: number;
+    class?: string;
+    direction?: Direction;
+}
+
+const { 
+    as: Element = 'div',
+    delay = 0,
+    duration = 500,
+    direction = 'up',
+    class: className = '',
+    ...props
+} = Astro.props;
+
+const translations = {
+    up: 'translate-y-4',
+    down: '-translate-y-4',
+    left: 'translate-x-4',
+    right: '-translate-x-4'
+} as const;
+
+const transforms = {
+    up: 'translateY(0)',
+    down: 'translateY(0)',
+    left: 'translateX(0)',
+    right: 'translateX(0)'
+} as const;
+
+const translateClass = translations[direction as Direction];
+const transformValue = transforms[direction as Direction];
+---
+
+<Element
+    class:list={[
+        'opacity-0 transition-all overflow-hidden',
+        translateClass,
+        className
+    ]}
+    data-fade-in
+    data-transform={transformValue}
+    style={`--fade-delay: ${delay}ms; --fade-duration: ${duration}ms;`}
+    {...props}
+>
+    <slot />
+</Element>
+
+<script>
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const handleIntersect: IntersectionObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target as HTMLElement;
+                const delay = element.style.getPropertyValue('--fade-delay');
+                const duration = element.style.getPropertyValue('--fade-duration');
+                const transform = element.dataset.transform || 'translateY(0)';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = transform;
+                    element.style.transitionDuration = duration;
+                    setTimeout(() => {
+                        element.style.overflow = 'visible';
+                    }, parseInt(duration));
+                }, parseInt(delay));
+                
+                observer.unobserve(element);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    
+    // Observe all elements with data-fade-in attribute
+    document.querySelectorAll('[data-fade-in]').forEach(element => {
+        observer.observe(element);
+    });
+</script> 

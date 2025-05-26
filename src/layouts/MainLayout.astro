@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
+import ScrollIndicator from '../components/ScrollIndicator.astro';
 
 export interface Props {
   title?: string;
@@ -476,5 +477,6 @@ const canonicalURL = new URL(
     </script>
     <SpeedInsights />
     <Analytics />
+    <ScrollIndicator />
   </body>
 </html>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 export interface Props {
   title?: string;
@@ -472,5 +473,6 @@ const canonicalURL = new URL(
         }),
       );
     </script>
+    <SpeedInsights />
   </body>
 </html>

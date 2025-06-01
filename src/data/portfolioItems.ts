@@ -10,6 +10,14 @@ export interface PortfolioItem {
 // Define portfolio items data
 export const portfolioItems: PortfolioItem[] = [
   {
+    title: "notes-to-quiz",
+    description:
+      "An AI-powered React + Vite app that converts study notes into interactive quizzes. It helps users easily create, manage, and take quizzes, making learning more engaging and effective.",
+    imageUrl: "/images/notes-to-quiz.webp",
+    link: "https://github.com/victorjosefcaro/notes-to-quiz",
+    skills: ["HTML", "CSS", "Tailwind CSS", "React", "Vite", "VS Code"],
+  },
+  {
     title: "tomato-ripeness-analyzer",
     description:
       "A machine learning tool designed to classify the ripeness stages of hybrid tomatoes from images, utilizing K-Nearest Neighbors (KNN) and Support Vector Machine (SVM) algorithms.",

@@ -37,6 +37,8 @@ export const skillCategories: SkillCategory[] = [
       { name: "Laravel", icon: "fas fa-cubes" },
       { name: "Astro", icon: "fas fa-rocket" },
       { name: "Tailwind CSS", icon: "fas fa-wind" },
+      { name: "React", icon: "fab fa-react" },
+      { name: "Vite", icon: "fas fa-bolt" },
     ],
   },
   {
@@ -60,7 +62,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Power BI", icon: "fas fa-chart-bar" },
       { name: "scikit-learn", icon: "fas fa-chart-line" },
       { name: "PyTorch", icon: "fas fa-fire" },
-      { name: "RapidMiner", icon: "fas fa-bolt" },
+      { name: "RapidMiner", icon: "fas fa-cog" },
     ],
   },
 ]; 

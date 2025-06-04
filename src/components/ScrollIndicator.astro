@@ -2,64 +2,54 @@
 // ScrollIndicator.astro
 ---
 
-<div 
-  class="scroll-indicator fixed bottom-8 left-1/2 transform -translate-x-1/2 text-3xl text-indigo-600 dark:text-indigo-400"
+<div
+  class="scroll-indicator left-1/2 -translate-x-1/2 items-center fixed bottom-16 text-gray-950 dark:text-gray-50"
   onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })"
   aria-label="Scroll down"
   role="button"
   tabindex="0"
 >
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="40" 
-    height="40" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    stroke-width="2.5" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-    class="filter drop-shadow-lg"
-  >
-    <path d="M12 5v14M19 12l-7 7-7-7"/>
-  </svg>
+  <i class="fas fa-chevron-down filter drop-shadow-lg" style="font-size: 32px;"
+  ></i>
 </div>
 
 <script>
-  const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement;
+  const scrollIndicator = document.querySelector(
+    ".scroll-indicator",
+  ) as HTMLElement;
   let isVisible = true;
-  
+
   if (scrollIndicator) {
     // Initially show the indicator with fade in if at the top
     if (window.scrollY >= 100) {
-      scrollIndicator.style.display = 'none';
+      scrollIndicator.style.display = "none";
       isVisible = false;
     } else {
-      scrollIndicator.classList.add('fade-in');
+      scrollIndicator.classList.add("fade-in");
     }
-    
-    window.addEventListener('scroll', () => {
+
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 100 && isVisible) {
         // Remove fade-in class if it exists
-        scrollIndicator.classList.remove('fade-in');
+        scrollIndicator.classList.remove("fade-in");
         // Add fade out animation
-        scrollIndicator.classList.add('fade-out');
+        scrollIndicator.classList.add("fade-out");
         isVisible = false;
-        
+
         // After animation completes, hide the element
         setTimeout(() => {
-          scrollIndicator.style.display = 'none';
+          scrollIndicator.style.display = "none";
         }, 500); // Match this with the animation duration (0.5s = 500ms)
       } else if (window.scrollY <= 100 && !isVisible) {
         // Show and reset the element with fade in
-        scrollIndicator.classList.remove('fade-out');
-        scrollIndicator.style.display = 'block';
+        scrollIndicator.classList.remove("fade-out");
+        scrollIndicator.style.display = "block";
         // Use setTimeout to ensure display: block is processed before adding the animation
         setTimeout(() => {
-          scrollIndicator.classList.add('fade-in');
+          scrollIndicator.classList.add("fade-in");
         }, 10);
         isVisible = true;
       }
     });
   }
-</script> 
+</script>

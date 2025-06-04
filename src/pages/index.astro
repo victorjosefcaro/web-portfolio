@@ -91,9 +91,11 @@ const keywords =
                 >
                   <i class="fab fa-linkedin"></i>
                 </a>
-                <i
-                  class="fas fa-location-dot hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
-                ></i>
+                <div class="relative inline-block">
+                  <i
+                    class="fas fa-location-dot hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
+                  ></i>
+                </div>
                 <span>Cavite, Philippines</span>
               </div>
             </span>
@@ -387,11 +389,16 @@ const keywords =
     const locationIcon = document.querySelector(".fa-location-dot");
     const locationTooltip = document.createElement("span");
     locationTooltip.className =
-      "absolute bg-indigo-600 text-white text-sm rounded px-2 py-1 shadow-md hidden dark:bg-indigo-300 dark:text-gray-900";
+      "absolute bg-indigo-600 text-white text-sm font-mono rounded px-2 py-1 shadow-md hidden dark:bg-indigo-300 dark:text-gray-900";
     locationTooltip.style.zIndex = "10";
     locationTooltip.style.whiteSpace = "nowrap";
     locationTooltip.style.position = "absolute";
-    locationTooltip.style.transform = "translate(66%, -120%)";
+    locationTooltip.style.left = "50%";
+    locationTooltip.style.top = "-120%";
+    locationTooltip.style.transform = "translateX(-50%)";
+    locationTooltip.style.textAlign = "center";
+    locationTooltip.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    locationTooltip.style.opacity = "0";
 
     function updateTime() {
       const now = new Date();
@@ -407,11 +414,17 @@ const keywords =
     locationIcon.addEventListener("mouseenter", () => {
       updateTime();
       locationTooltip.classList.remove("hidden");
-      locationIcon.parentElement.appendChild(locationTooltip);
+      locationTooltip.style.opacity = "1";
+      locationTooltip.style.transform = "translateX(-50%) translateY(0)";
+      locationIcon.closest("div.relative").appendChild(locationTooltip);
     });
 
     locationIcon.addEventListener("mouseleave", () => {
-      locationTooltip.classList.add("hidden");
+      locationTooltip.style.opacity = "0";
+      locationTooltip.style.transform = "translateX(-50%) translateY(-10px)";
+      setTimeout(() => {
+        locationTooltip.classList.add("hidden");
+      }, 400);
     });
   </script>
 </MainLayout>

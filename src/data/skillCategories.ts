@@ -39,6 +39,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Tailwind CSS", icon: "fas fa-wind" },
       { name: "React", icon: "fab fa-react" },
       { name: "Vite", icon: "fas fa-bolt" },
+      { name: "Material UI", icon: "fas fa-boxes-stacked" },
     ],
   },
   {

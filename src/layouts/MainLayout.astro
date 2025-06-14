@@ -303,6 +303,14 @@ const canonicalURL = new URL(
             class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
             ><i class="fab fa-linkedin"></i></a
           >
+          <a
+            href="mailto:victorjosefcaro@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Email"
+            class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-2xl"
+            ><i class="fas fa-envelope"></i></a
+          >
           <button
             id="theme-toggle-sidebar"
             aria-label="Toggle Light/Dark Mode"
@@ -327,15 +335,6 @@ const canonicalURL = new URL(
         class="fixed bottom-6 left-6 flex flex-col space-y-3 z-40 hidden md:flex"
       >
         <a
-          href="mailto:victorjosefcaro@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Email"
-          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
-        >
-          <i class="fas fa-envelope text-2xl"></i>
-        </a>
-        <a
           href="https://github.com/victorjosefcaro"
           target="_blank"
           rel="noopener noreferrer"
@@ -352,6 +351,15 @@ const canonicalURL = new URL(
           class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
         >
           <i class="fab fa-linkedin text-2xl"></i>
+        </a>
+        <a
+          href="mailto:victorjosefcaro@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Email"
+          class="bg-gray-50 dark:bg-gray-950 shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+        >
+          <i class="fas fa-envelope text-2xl"></i>
         </a>
       </div>
 
@@ -410,21 +418,25 @@ const canonicalURL = new URL(
           .map((id) => document.getElementById(`nav-${id}`))
           .filter(Boolean); // Filter out null elements
 
-        function getHighlightClass() {
-          return document.documentElement.classList.contains("dark")
-            ? "text-indigo-300"
-            : "text-indigo-700";
+        function getHighlightClasses() {
+          const isDark = document.documentElement.classList.contains("dark");
+          return {
+            bg: isDark ? "bg-indigo-300" : "bg-indigo-700",
+            text: isDark ? "text-gray-950" : "text-gray-50",
+          };
         }
 
         function onScroll() {
           if (navLinks.length === 0) return;
 
-          let highlightClass = getHighlightClass();
+          const { bg: highlightBg, text: highlightText } =
+            getHighlightClasses();
           navLinks.forEach((link) =>
             link.classList.remove(
-              "text-indigo-700",
-              "text-indigo-300",
-              "font-bold",
+              "bg-indigo-700",
+              "bg-indigo-300",
+              "text-gray-50",
+              "text-gray-950",
             ),
           );
           for (let i = sections.length - 1; i >= 0; i--) {
@@ -432,7 +444,7 @@ const canonicalURL = new URL(
             if (section) {
               const rect = section.getBoundingClientRect();
               if (rect.top <= 200) {
-                navLinks[i].classList.add(highlightClass, "font-bold");
+                navLinks[i].classList.add(highlightBg, highlightText);
                 break;
               }
             }
@@ -481,6 +493,10 @@ const canonicalURL = new URL(
           const isDark = htmlEl.classList.contains("dark");
           setTheme(!isDark);
           localStorage.setItem("theme", !isDark ? "dark" : "light");
+
+          if (!isBlogPost) {
+            onScroll();
+          }
         }),
       );
     </script>

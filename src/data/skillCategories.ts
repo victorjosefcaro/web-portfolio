@@ -15,7 +15,7 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: "Core Technologies",
-    bgColor: "bg-blue-100 dark:bg-blue-900",
+    bgColor: "bg-blue-200 dark:bg-blue-900",
     textColor: "text-blue-800 dark:text-blue-200",
     skills: [
       { name: "HTML", icon: "fab fa-html5" },
@@ -26,7 +26,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Frameworks & Libraries",
-    bgColor: "bg-green-100 dark:bg-green-900",
+    bgColor: "bg-green-200 dark:bg-green-900",
     textColor: "text-green-800 dark:text-green-200",
     skills: [
       { name: "Astro", icon: "fas fa-rocket" },
@@ -37,7 +37,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Styling & UI/UX",
-    bgColor: "bg-orange-100 dark:bg-orange-900",
+    bgColor: "bg-orange-200 dark:bg-orange-900",
     textColor: "text-orange-800 dark:text-orange-200",
     skills: [
       { name: "Bootstrap", icon: "fab fa-bootstrap" },
@@ -47,13 +47,13 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Build Tools & Version Control",
-    bgColor: "bg-purple-100 dark:bg-purple-900",
+    bgColor: "bg-purple-200 dark:bg-purple-900",
     textColor: "text-purple-800 dark:text-purple-200",
     skills: [
       { name: "Vite", icon: "fas fa-bolt" },
       { name: "npm", icon: "fab fa-npm" },
-      { name: "GitHub", icon: "fab fa-github" },
       { name: "ESLint", icon: "fas fa-check-circle" },
+      { name: "GitHub", icon: "fab fa-github" },
     ],
   },
 ]; 

@@ -31,78 +31,72 @@ const keywords =
     <section id="about" class="mb-8 sm:mb-12 md:mb-16 lg:mb-20">
       {/* Hero Banner Container */}
       <div
-        class="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 px-4 sm:px-8 md:px-16 lg:px-32 py-16 sm:py-24 md:py-36 shadow-lg flex flex-col md:flex-row items-center md:gap-12 justify-center"
+        class="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 px-4 sm:px-8 md:px-16 lg:px-32 py-16 sm:py-36 md:py-48 shadow-lg flex flex-col md:flex-row items-center md:gap-12 justify-center"
       >
+        {/* Image Content */}
+        <div class="flex justify-end mb-4">
+          <FadeIn delay={400}>
+            <img
+              src="/images/Victor.webp"
+              alt="Victor Caro Profile Picture"
+              class="rounded-full w-48 h-48 sm:w-64 sm:h-64 object-cover shadow-lg"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </FadeIn>
+        </div>
         {/* Text Content */}
-        <div class="text-center md:text-left">
-          <FadeIn delay={0}>
+        <div class="text-center md:text-left max-w-2xl">
+          <FadeIn delay={800}>
             <h1
-              class="text-2xl md:text-3xl lg:text-4xl xl:text-7xl text-gray-900 dark:text-white md:mb-2 leading-tight"
+              class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-900 dark:text-white md:mb-2"
             >
               Hi! I'm <span
                 class="text-indigo-600 dark:text-indigo-300 font-bold"
                 >Victor Caro</span
               >
             </h1>
-          </FadeIn>
-          <FadeIn delay={400}>
             <h2
-              class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-200 md:mb-4 leading-relaxed"
+              class="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-700 dark:text-gray-200 md:mb-2"
             >
-              Frontend Web Developer based in <span
-                class="relative inline-block hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
-                id="location-text"
-                >Cavite, Philippines</span
-              >
+              Frontend Web Developer
             </h2>
-          </FadeIn>
-          <FadeIn delay={800}>
-            <span
-              class="block text-base sm:text-xl mt-2 text-gray-600 dark:text-gray-400 mb-8"
+            <h3
+              class="text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-700 dark:text-gray-200 mb-2"
             >
-              <div
-                class="inline-flex space-x-8 items-center sm:text-md md:text-lg lg:text-2xl"
+              <span id="location" class="relative inline-block cursor-pointer"
+                ><i class="fas fa-location-dot"></i></span
+              > Cavite, Philippines
+            </h3>
+            <div
+              class="block text-base text-gray-700 dark:text-gray-200 mb-4 inline-flex space-x-4 md:space-x-8 items-center text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            >
+              <a
+                href="https://github.com/victorjosefcaro"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub"
+                class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
               >
-                <a
-                  href="https://github.com/victorjosefcaro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
-                  class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
-                >
-                  <i class="fab fa-github"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/victor-caro-a4906434a/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="LinkedIn"
-                  class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
-                >
-                  <i class="fab fa-linkedin"></i>
-                </a>
-                <a
-                  href="mailto:victorjosefcaro@gmail.com"
-                  title="Email"
-                  class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
-                >
-                  <i class="fas fa-envelope"></i>
-                </a>
-              </div>
-            </span>
-          </FadeIn>
-        </div>
-
-        {/* Image Content */}
-        <div class="flex justify-end">
-          <FadeIn delay={1200}>
-            <img
-              src="/images/Victor.webp"
-              alt="Victor Caro Profile Picture"
-              class="rounded-full w-32 h-32 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-lg"
-              loading="eager"
-              fetchpriority="high"
-            />
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/victor-caro-a4906434a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn"
+                class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="mailto:victorjosefcaro@gmail.com"
+                title="Email"
+                class="hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
           </FadeIn>
         </div>
       </div>
@@ -373,7 +367,7 @@ const keywords =
   </div>
 
   <script is:inline>
-    const locationText = document.getElementById("location-text");
+    const locationText = document.getElementById("location");
     const locationTooltip = document.createElement("span");
     locationTooltip.className =
       "absolute bg-indigo-600 text-white text-sm font-mono rounded px-2 py-1 shadow-md hidden dark:bg-indigo-300 dark:text-gray-900";

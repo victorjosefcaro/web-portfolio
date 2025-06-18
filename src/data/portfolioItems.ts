@@ -33,4 +33,12 @@ export const portfolioItems: PortfolioItem[] = [
     link: "https://github.com/victorjosefcaro/ROQS",
     skills: ["SQL", "PHP", "HTML", "CSS", "Bootstrap"],
   },
+  {
+    title: "web-portfolio",
+    description:
+      "The one you're viewing right now! Built with Astro and styled with Tailwind CSS, this website showcases my skills in frontend web development.",
+    imageUrl: "/images/portfolio.webp",
+    link: "https://github.com/victorjosefcaro/web-portfolio",
+    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "Astro", "Tailwind CSS"],
+  },
 ]; 
